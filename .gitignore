@@ -52,3 +52,9 @@
 
 # IDE Project files
 /.idea
+
+# NetBeans IDE Project files
+/nbproject/
+
+# Eclipse Project files
+/.settings/
