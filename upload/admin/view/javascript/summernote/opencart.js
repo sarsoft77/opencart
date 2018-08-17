@@ -7,6 +7,7 @@ $(document).ready(function() {
 			disableDragAndDrop: true,
 			height: 300,
 			emptyPara: '',
+			lang: 'ru-RU',
 			toolbar: [
 				['style', ['style']],
 				['font', ['bold', 'underline', 'clear']],
