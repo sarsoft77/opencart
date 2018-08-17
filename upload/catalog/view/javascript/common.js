@@ -160,14 +160,14 @@ var cart = {
 				$('#cart > button').button('reset');
 			},
 			success: function(json) {
-				$('.alert, .text-danger').remove();
+				$('.alert-dismissible, .text-danger').remove();
 
 				if (json['redirect']) {
 					location = json['redirect'];
 				}
 
 				if (json['success']) {
-					$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+					$('#content').parent().before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 					// Need to set timeout otherwise it wont update the total
 					setTimeout(function () {
@@ -287,14 +287,14 @@ var wishlist = {
 			data: 'product_id=' + product_id,
 			dataType: 'json',
 			success: function(json) {
-				$('.alert').remove();
+				$('.alert-dismissible').remove();
 
 				if (json['redirect']) {
 					location = json['redirect'];
 				}
 
 				if (json['success']) {
-					$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+					$('#content').parent().before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				}
 
 				$('#wishlist-total span').html(json['total']);
@@ -320,10 +320,10 @@ var compare = {
 			data: 'product_id=' + product_id,
 			dataType: 'json',
 			success: function(json) {
-				$('.alert').remove();
+				$('.alert-dismissible').remove();
 
 				if (json['success']) {
-					$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+					$('#content').parent().before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 					$('#compare-total').html(json['total']);
 
@@ -361,7 +361,7 @@ $(document).delegate('.agree', 'click', function(e) {
 			html += '        <h4 class="modal-title">' + $(element).text() + '</h4>';
 			html += '      </div>';
 			html += '      <div class="modal-body">' + data + '</div>';
-			html += '    </div';
+			html += '    </div>';
 			html += '  </div>';
 			html += '</div>';
 
