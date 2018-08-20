@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
-<name>Tweak for OpenCart 2x Russkaya sborka</name>
-<code>Tweak for OpenCart 2x Russkaya sborka</code>
-<version>2.3.0.2</version>
-<date>02.07.2017</date>
+<name>Tweak for OpenCart 3x Russkaya sborka</name>
+<code>Tweak for OpenCart 3x Russkaya sborka</code>
+<version>3.0.2.0-4</version>
+<date>13.06.2018</date>
 <author>Romans</author>
 <link>http://opencart-russia.ru</link>
 
 
-<file path="admin/view/template/common/header.tpl">
+<file path="admin/view/template/common/header.twig">
 <!-- Расширяем колонку меню для русских слов и подключаем translit.js-->
 	<operation>
 		<search><![CDATA[
-		<?php foreach ($links as $link) { ?>
+		{% for link in links %}
 		]]></search>
 		<add position="before"><![CDATA[
-<script type="text/javascript" src="view/javascript/jquery/translit.js"></script>
+		<script type="text/javascript" src="view/javascript/jquery/translit.js"></script>
 
-<style>
-#column-left.active {width: 260px !important;}
-#column-left.active + #content {margin-left: 270px !important;}
-#menu > li > ul {width: 235px;}
-</style>
+		<style>
+		@media (min-width: 768px){
+			#column-left {width: 260px !important;}
+			#column-left + #content {margin-left: 260px !important;}
+			.bimage {margin:0;}
+		}
+		</style>
 		]]></add>
 	</operation>
 
@@ -29,41 +31,41 @@
 <!-- Добавляем ссылки на сайт, документацию, форум -->	
 	<operation>
 		<search><![CDATA[
-		<li><a href="http://www.opencart.com" target="_blank"><?php echo $text_homepage; ?></a></li>
+		<li><a href="http://www.opencart.com" target="_blank"><i class="fa fa-opencart fa-fw"></i> {{ text_homepage }}</a></li>
 		]]></search>
 		<add position="replace"><![CDATA[
-		<li><a href="http://opencart-russia.ru/" target="_blank"><?php echo $text_homepage; ?></a></li>
+		<li><a href="http://opencart-russia.ru/" target="_blank"><i class="fa fa-opencart fa-fw"></i> {{ text_homepage }}</a></li>
 		]]></add>
 	</operation>
 	
 	<operation>
 		<search><![CDATA[
-		<li><a href="http://docs.opencart.com" target="_blank"><?php echo $text_documentation; ?></a></li>
+		<li><a href="http://docs.opencart.com" target="_blank"><i class="fa fa-file-text-o fa-fw"></i> {{ text_documentation }}</a></li>
 		]]></search>
 		<add position="replace"><![CDATA[
-		<li><a href="http://forum.opencart-russia.ru/threads/soderzhanie.5/" target="_blank"><?php echo $text_documentation; ?></a></li>
+		<li><a href="http://forum.opencart-russia.ru/threads/soderzhanie.6030/" target="_blank"><i class="fa fa-file-text-o fa-fw"></i> {{ text_documentation }}</a></li>
 		]]></add>
 	</operation>
 	
 	<operation>
 		<search><![CDATA[
-		<li><a href="http://forum.opencart.com" target="_blank"><?php echo $text_support; ?></a></li>
+		<li><a href="http://forum.opencart.com" target="_blank"><i class="fa fa-comments-o fa-fw"></i> {{ text_support }}</a></li>
 		]]></search>
 		<add position="replace"><![CDATA[
-		<li><a href="http://forum.opencart-russia.ru" target="_blank"><?php echo $text_support; ?></a></li>
+		<li><a href="http://forum.opencart-russia.ru" target="_blank"><i class="fa fa-comments-o fa-fw"></i> {{ text_support }}</a></li>
 		]]></add>
 	</operation>
 	
 </file>
 
 <!-- Скрываем поля в форме товара -->
-<file path="admin/view/template/catalog/product_form.tpl">
+<file path="admin/view/template/catalog/product_form.twig">
 	<operation>
 		<search><![CDATA[
-			<label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="<?php echo $help_sku; ?>"><?php echo $entry_sku; ?></span></label>
+			<label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="{{ help_sku }}">{{ entry_sku }}</span></label>
 		]]></search>
 		<add position="replace" offset="-2"><![CDATA[
-               <label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="<?php echo $help_sku; ?>"><?php echo $entry_sku; ?></span></label>
+			   <label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="{{ help_sku }}">{{ entry_sku }}</span></label>
 		]]></add>
 	</operation>
 	
@@ -84,7 +86,7 @@
 	
 	<operation>
 		<search><![CDATA[
-		<label class="col-sm-2 control-label" for="input-location"><?php echo $entry_location; ?></label>
+		<label class="col-sm-2 control-label" for="input-location">{{ entry_location }}</label>
 		]]></search>
 		<add position="before" offset="1"><![CDATA[
 			  </div>
@@ -93,28 +95,23 @@
 	
 	<operation>
 		<search><![CDATA[
-		<input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
+		<input type="text" name="model" value="{{ model }}" placeholder="{{ entry_model }}" id="input-model" class="form-control" />
 		]]></search>
 		<add position="replace" offset="-1"><![CDATA[
                 <div class="col-sm-9">
-                  <input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
-		]]></add>
-	</operation>
-</file>
-
-
-<!-- Делаем кнопку импорта более ровной за счет класса button -->
-<file path="admin/view/template/tool/backup.tpl">
-	<operation>
-		<search><![CDATA[
-		<input type="file" name="import" id="input-import" />
-		]]></search>
-		<add position="replace"><![CDATA[
-		<input class="btn btn-default" type="file" name="import" id="input-import" />
+                  <input type="text" name="model" value="{{ model }}" placeholder="{{ entry_model }}" id="input-model" class="form-control" />
 		]]></add>
 	</operation>
 	
+	<operation> <!-- Попутно удаляем вкладку "Периодичность", почему то она всем мешает. -->
+		<search><![CDATA[
+		<li><a href="#tab-recurring" data-toggle="tab">{{ tab_recurring }}</a></li>
+		]]></search>
+		<add position="replace"><![CDATA[ ]]></add>
+	</operation>
+	
 </file>
+
 
 
 <!-- Делаем в файловом менеджере сохранение последней открытой директории и крошки -->
@@ -163,6 +160,14 @@
 		]]></add>
 	</operation>
 	
+	<operation>
+		<search><![CDATA[
+		$directory = rtrim(DIR_IMAGE . 'catalog/' . str_replace('*', '', $this->request->get['directory']), '/');
+		]]></search>
+		<add position="after" offset="4"><![CDATA[
+		$data['dirs'] = false;
+		]]></add>
+	</operation>
 	
 	<!-- Делаем возможность транислитерации русских имен изображений и директории при загрузке через файловый менеджер.-->
 	<operation>
@@ -171,8 +176,8 @@
 		]]></search>
 		<add position="before"><![CDATA[
 			function translit ($text) {
-				$rus = array("а","А","б","Б","в","В","г","Г","д","Д","е","Е","ё","Ё","ж", "Ж", "з","З","и","И","й","Й","к","К","л","Л","м","М","н","Н","о","О","п","П","р","Р", "с","С","т","Т","у","У","ф","Ф","х","Х","ц","Ц","ч", "Ч", "ш", "Ш", "щ",  "Щ", "ъ","Ъ", "ы","Ы","ь","Ь","э","Э","ю", "Ю", "я","Я",'/',' ');
-				$eng =array("a","A","b","B","v","V","g","G","d","D","e","E","e","E", "zh","ZH","z","Z","i","I","j","J","k","K","l","L","m","M","n","N","o","O", "p","P","r","R","s","S","t","T","u","U","f","F","h","H","c","C","ch","CH", "sh","SH","sch","SCH","", "", "i","I","","","e","E","yu","YU","ya","YA",'','');
+				$rus = array("а","А","б","Б","в","В","г","Г","д","Д","е","Е","ё","Ё","ж", "Ж", "з","З","и","И","й","Й","к","К","л","Л","м","М","н","Н","о","О","п","П","р","Р", "с","С","т","Т","у","У","ф","Ф","х","Х","ц","Ц","ч", "Ч", "ш", "Ш", "щ",  "Щ", "ъ","Ъ", "ы","Ы","ь","Ь","э","Э","ю", "Ю", "я","Я",'/',' ','—');
+				$eng =array("a","A","b","B","v","V","g","G","d","D","e","E","e","E", "zh","ZH","z","Z","i","I","j","J","k","K","l","L","m","M","n","N","o","O", "p","P","r","R","s","S","t","T","u","U","f","F","h","H","c","C","ch","CH", "sh","SH","sch","SCH","", "", "i","I","","","e","E","yu","YU","ya","YA",'','','-');
 				$text = str_replace($rus,$eng,$text);
 				return $text;
 			}
@@ -197,42 +202,22 @@
 		]]></add>
 	</operation>
 	
-	
-	<!-- исправляем ошибки поиска файла -->
-	<operation>
-		<search><![CDATA[
-			$filter_name = rtrim(str_replace('*', '', $this->request->get['filter_name']), '/');
-		]]></search>
-		<add position="replace"><![CDATA[
-			$filter_name = rtrim(str_replace(array('*', '/'), '', $this->request->get['filter_name']), '/');
-		]]></add>
-	</operation>
-
-	<operation>
-		<search><![CDATA[
-			if (substr(str_replace('\\', '/', realpath($directory . '/' . $filter_name)), 0, strlen(DIR_IMAGE . 'catalog')) == DIR_IMAGE . 'catalog') {
-		]]></search>
-		<add position="replace"><![CDATA[
-			if (substr(str_replace('\\', '/', realpath($directory) . '/' . $filter_name), 0, strlen(DIR_IMAGE . 'catalog')) == DIR_IMAGE . 'catalog') {
-		]]></add>
-	</operation>
-	
 </file>
 
-<file path="admin/view/template/common/filemanager.tpl">
+<file path="admin/view/template/common/filemanager.twig">
 
 	<operation>
 		<search><![CDATA[
-		<?php foreach (array_chunk($images, 4) as $image) { ?>
+		{% for image in images|batch(4) %}
 		]]></search>
 		<add position="before"><![CDATA[
-		<ol class="breadcrumb">
+		<ol class="breadcrumb bimage">
 			<li><i class="fa fa-home fa-lg"></i></li>	  
-			<?php if (isset($dirs)) { ?>
-			<?php foreach ($dirs as $dir) { ?>
-			<li><?php echo $dir; ?></li>
-			<?php } ?>
-			<?php } ?>
+			{% if dirs %}
+				{% for dir in dirs %}
+					<li>{{ dir }}</li>
+				{% endfor %}
+			{% endif %}
 			<li></li>
 		</ol>
 		<hr />
@@ -251,8 +236,8 @@
 		]]></search>
 		<add position="before"><![CDATA[
 			function translit ($text) {
-				$rus = array("а","А","б","Б","в","В","г","Г","д","Д","е","Е","ё","Ё","ж", "Ж", "з","З","и","И","й","Й","к","К","л","Л","м","М","н","Н","о","О","п","П","р","Р", "с","С","т","Т","у","У","ф","Ф","х","Х","ц","Ц","ч", "Ч", "ш", "Ш", "щ",  "Щ", "ъ","Ъ", "ы","Ы","ь","Ь","э","Э","ю", "Ю", "я","Я",'/',' ');
-				$eng =array("a","A","b","B","v","V","g","G","d","D","e","E","e","E", "zh","ZH","z","Z","i","I","j","J","k","K","l","L","m","M","n","N","o","O", "p","P","r","R","s","S","t","T","u","U","f","F","h","H","c","C","ch","CH", "sh","SH","sch","SCH","", "", "i","I","","","e","E","yu","YU","ya","YA",'','');
+				$rus = array("а","А","б","Б","в","В","г","Г","д","Д","е","Е","ё","Ё","ж", "Ж", "з","З","и","И","й","Й","к","К","л","Л","м","М","н","Н","о","О","п","П","р","Р", "с","С","т","Т","у","У","ф","Ф","х","Х","ц","Ц","ч", "Ч", "ш", "Ш", "щ",  "Щ", "ъ","Ъ", "ы","Ы","ь","Ь","э","Э","ю", "Ю", "я","Я",'/',' ','—');
+				$eng =array("a","A","b","B","v","V","g","G","d","D","e","E","e","E", "zh","ZH","z","Z","i","I","j","J","k","K","l","L","m","M","n","N","o","O", "p","P","r","R","s","S","t","T","u","U","f","F","h","H","c","C","ch","CH", "sh","SH","sch","SCH","", "", "i","I","","","e","E","yu","YU","ya","YA",'','','-');
 				$text = str_replace($rus,$eng,$text);
 				return $text;
 			}
@@ -271,117 +256,297 @@
 </file>
 
 
-
-<!-- Подключаем русский перевод для редактора Summernote -->	
-<file path="admin/view/template/catalog/{product_form.tpl,information_form.tpl,category_form.tpl}|admin/view/template/extension/module/html.tpl|admin/view/template/marketing/contact.tpl">
-
-	<operation>
-		<search><![CDATA[
-		<script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
-		]]></search>
-		<add position="after" trim="true"><![CDATA[
-		<script type="text/javascript" src="view/javascript/summernote/lang/summernote-ru-RU.js"></script>
-		]]></add>
-	</operation>
-	
-</file>
-
 <!-- Тип расширения Модули по умолчанию, вместо первого повавшегося Аналитика  -->	
-<file path="admin/view/template/extension/extension.tpl">
+<file path="admin/controller/marketplace/extension.php">
 
 	<operation>
 		<search><![CDATA[
-		<?php echo $header; ?><?php echo $column_left; ?>
+			$data['type'] = '';
 		]]></search>
-		<add position="after" trim="true"><![CDATA[
-		<?php $type = ($type) ? $type : 'module'; ?>
+		<add position="replace" trim="true"><![CDATA[
+			$data['type'] = 'module';
 		]]></add>
 	</operation>
 	
 </file>
 
-
-<!-- Исправляем ошибки, которые мешают в 2.3  -->
-
-<file path="admin/controller/common/column_left.php">
+<!-- Магазин, добавляем ссылку на свой сайт  -->	
+<file path="admin/view/template/marketplace/marketplace_list.twig">
 
 	<operation>
 		<search><![CDATA[
-			$data['lastname'] = $user_info['lastname'];
+			{% if license.value == filter_license %}<a href="{{ license.href }}" class="btn btn-default active">{{ license.text }}</a>{% else %}<a href="{{ license.href }}" class="btn btn-default">{{ license.text }}</a>{% endif %}
 		]]></search>
-		<add position="after"><![CDATA[
-			$data['username']  = $user_info['username'];
-		]]></add>
-	</operation>
-	
-	<operation>
-		<search><![CDATA[
-			$data['lastname'] = '';
-		]]></search>
-		<add position="after"><![CDATA[
-			$data['username'] = '';
-		]]></add>
-	</operation>	
-	
-</file>
-
-<!-- Ошибка ссылки пагинации первых страниц и отрицательного номера страницы -->
-<file path="system/library/pagination.php">
-
-	<operation>
-		<search><![CDATA[
-			$output .= '<li><a href="' . str_replace(array('&amp;page={page}', '&page={page}'), '', $this->url) . '">' . $this->text_first . '</a></li>';
-		]]></search>
-		<add position="replace"><![CDATA[
-			$output .= '<li><a href="' . str_replace(array('&amp;page={page}', '?page={page}', '&page={page}'), '', $this->url) . '">' . $this->text_first . '</a></li>';
-		]]></add>
-	</operation>
-	
-	<operation>
-		<search><![CDATA[
-			$output .= '<li><a href="' . str_replace(array('&amp;page={page}', '&page={page}'), '', $this->url) . '">' . $this->text_prev . '</a></li>';
-		]]></search>
-		<add position="replace"><![CDATA[
-			$output .= '<li><a href="' . str_replace(array('&amp;page={page}', '?page={page}', '&page={page}'), '', $this->url) . '">' . $this->text_prev . '</a></li>';
-		]]></add>
-	</operation>
-	
-	<operation>
-		<search><![CDATA[
-			$output .= '<li><a href="' . str_replace(array('&amp;page={page}', '&page={page}'), '', $this->url) . '">' . $i . '</a></li>';
-		]]></search>
-		<add position="replace"><![CDATA[
-			$output .= '<li><a href="' . str_replace(array('&amp;page={page}', '?page={page}', '&page={page}'), '', $this->url) . '">' . $i . '</a></li>';
-		]]></add>
+		<add position="replace" offset="1"><![CDATA[
+			{% if license.value == filter_license %}<a href="{{ license.href }}" class="btn btn-default active">{{ license.text }}</a>{% else %}<a href="{{ license.href }}" class="btn btn-default">{{ license.text }}</a>{% endif %}
+			{% endfor %}
+			<a href="http://shop.opencart-russia.ru/" target="_blank" class="btn btn-default">Расширения c opencart-russia.ru</a>
+			</div>
+			]]></add>
 	</operation>
 	
 </file>
 
-<file path="catalog/controller/startup/startup.php">
-	<operation>
-		<search><![CDATA[
-			$this->registry->set('openbay', new Openbay($this->registry));
-		]]></search>
-		<add position="after"><![CDATA[
-			// fix minus number page
-			if (isset($this->request->get['page']) && (int)$this->request->get['page'] < 1) {
-				$this->request->get['page'] = NULL;
-			}
-		]]></add>
-	</operation>
-</file>
 
-<!-- Не ошибка, но иногда письмо с формы обратной связи не доходит. Делаем более правильный вариант -->
+<!-- Приводим немного сайт к 152 ФЗ	 -->   
 <file path="catalog/controller/information/contact.php">
+
 	<operation>
 		<search><![CDATA[
-			$mail->setFrom($this->request->post['email']);
+			if (isset($this->error['name'])) {
 		]]></search>
-		<add position="replace"><![CDATA[
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setReplyTo($this->request->post['email']);
+		<add position="before"><![CDATA[
+		if (isset($this->error['warning'])) {
+			$data['error_warning'] = $this->error['warning'];
+		} else {
+			$data['error_warning'] = '';
+		}
 		]]></add>
 	</operation>
+
+	<operation>
+		<search><![CDATA[
+			$data['comment'] = $this->config->get('config_comment');
+		]]></search>
+		<add position="after"><![CDATA[
+		if ($this->config->get('config_account_id')) {
+			$this->load->model('catalog/information');
+
+			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
+
+			if ($information_info) {
+				$data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information/agree', 'information_id=' . $this->config->get('config_account_id'), true), $information_info['title'], $information_info['title']);
+			} else {
+				$data['text_agree'] = '';
+			}
+		} else {
+			$data['text_agree'] = '';
+		}
+
+		if (isset($this->request->post['agree'])) {
+			$data['agree'] = $this->request->post['agree'];
+		} else {
+			$data['agree'] = false;
+		}
+		]]></add>
+	</operation>
+
+	<operation>
+		<search><![CDATA[
+			return !$this->error;
+		]]></search>
+		<add position="before"><![CDATA[
+		// Agree to terms
+		if ($this->config->get('config_account_id')) {
+			$this->load->model('catalog/information');
+
+			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
+
+			if ($information_info && !isset($this->request->post['agree'])) {
+				$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+			}
+		}
+		]]></add>
+	</operation>
+
 </file>
+
+<file path="catalog/view/theme/default/template/information/contact.twig">
+
+	<operation>
+		<search><![CDATA[
+			<div class="row">{{ column_left }}
+		]]></search>
+		<add position="before"><![CDATA[
+		{% if error_warning %}
+		<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+		{% endif %}
+		]]></add>
+	</operation>
+
+	<operation>
+		<search><![CDATA[
+			<div class="buttons">
+		]]></search>
+		<add position="before"><![CDATA[
+		{% if text_agree %}
+		<div class="buttons">
+		  <div class="pull-right">{{ text_agree }}
+			{% if agree %}
+			<input type="checkbox" name="agree" value="1" checked="checked" />
+			{% else %}
+			<input type="checkbox" name="agree" value="1" />
+			{% endif %}
+			&nbsp;
+			<input type="submit" value="{{ button_submit }}" class="btn btn-primary" />
+		  </div>
+		</div>
+		{% else %}
+		]]></add>
+	</operation>
+
+	<operation>
+		<search><![CDATA[
+			</form>
+		]]></search>
+		<add position="before"><![CDATA[
+		{% endif %}
+		]]></add>
+	</operation>
+
+</file>
+
+
+<!-- Курсы валют с ЦБРФ -->
+<file path="admin/model/localisation/currency.php">
+
+	<operation>
+		<search><![CDATA[
+		public function refresh($force = false) {
+		]]></search>
+		<add position="replace"><![CDATA[
+			public function old_refresh($force = false) {
+		]]></add>
+	</operation>
+
+	<operation>
+		<search><![CDATA[
+		public function getTotalCurrencies() {
+		]]></search>
+		<add position="before"><![CDATA[
+		// Обновление валюты с ЦБРФ
+		public function refresh($force = true) {
+			$currencies_data = array();
+			
+			if ($force) {
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code != '" . $this->db->escape($this->config->get('config_currency')) . "'");
+			} else {
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code != '" . $this->db->escape($this->config->get('config_currency')) . "' AND date_modified < '" .  $this->db->escape(date('Y-m-d H:i:s', strtotime('-1 day'))) . "'");
+			}
+			
+			$currencies_data[$this->config->get('config_currency')] = true;
+			foreach ($query->rows as $result) {
+				$currencies_data[$result['code']] = true;
+			}
+
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, 'http://www.cbr.ru/scripts/XML_daily.asp');
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($curl, CURLOPT_HEADER, false);
+			curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
+			curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+			$content = curl_exec($curl);
+			curl_close($curl);
+			if (!$content)  return false;
+
+			$currencies = simplexml_load_string($content);
+			if (!$currencies || count($currencies) == 0) return false;
+			
+			foreach ($currencies as $currency) {
+				if (isset($currencies_data[(string)$currency->CharCode])) {
+					$value = str_replace(',', '.', (string)$currency->Value);
+					$currencies_data[(string)$currency->CharCode] = $value / $currency->Nominal;
+				}
+			}
+			
+			foreach ($currencies_data as $currency => $value) {
+				if ($currency != $this->config->get('config_currency')) {
+					$currencies_data[$currency] = $currencies_data[$this->config->get('config_currency')] / $value;
+				}
+			}
+			
+			$currencies_data[$this->config->get('config_currency')] = 1;
+			foreach ($currencies_data as $currency => $value) {
+				$this->db->query("UPDATE " . DB_PREFIX . "currency SET value = '" . (float)$value . "', date_modified = '" .  $this->db->escape(date('Y-m-d H:i:s')) . "' WHERE code = '" . $this->db->escape($currency) . "'");
+			}
+			
+			$this->cache->delete('currency');
+		}
+		]]></add>
+	</operation>
+
+</file>
+
+
+<!-- Мелкие ошибки мешающие работать и временные меры-->
+
+<file path="catalog/controller/information/contact.php">
+
+	<operation>
+		<search><![CDATA[
+			$data['button_submit'] = $this->language->get('button_submit');
+		]]></search>
+		<add position="before"><![CDATA[
+			$data['text_contact'] = $this->language->get('text_contact'); 
+		]]></add>
+	</operation>
+
+</file>
+
+<file path="catalog/controller/checkout/cart.php">
+
+	<operation>
+		<search><![CDATA[
+			if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
+		]]></search>
+		<add position="after"><![CDATA[
+			$data['heading_title'] = $this->language->get('heading_title');
+		]]></add>
+	</operation>
+
+</file>
+
+<file path="catalog/controller/product/category.php">
+
+	<operation>
+		<search><![CDATA[
+			$this->document->setKeywords($category_info['meta_keyword']);
+		]]></search>
+		<add position="after"><![CDATA[
+			$data['text_empty'] = $this->language->get('text_empty');
+		]]></add>
+	</operation>
+
+</file>
+
+<file path="catalog/controller/account/order.php">
+
+	<operation>
+		<search><![CDATA[
+			 $data['order_id'] = $this->request->get['order_id']; 
+		]]></search>
+		<add position="after"><![CDATA[
+			 $data['text_order_id'] = $this->language->get('text_order_id'); 
+		]]></add>
+	</operation>
+
+</file>
+
+<file path="catalog/controller/account/account.php">
+
+	<operation>
+		<search><![CDATA[
+			$data['credit_cards'] = array();
+		]]></search>
+		<add position="before"><![CDATA[
+			$data['text_wishlist'] = $this->language->get('text_wishlist');
+		]]></add>
+	</operation>
+
+</file>
+
+<file path="admin/view/template/common/developer.twig">
+
+	<operation>
+		<search><![CDATA[
+			<td style="width: 150px;">{{ entry_cache }}</td>
+		]]></search>
+		<add position="replace"><![CDATA[
+			<td style="width: 200px;">{{ entry_cache }}</td>
+		]]></add>
+	</operation>
+
+</file>
+
 
 </modification>

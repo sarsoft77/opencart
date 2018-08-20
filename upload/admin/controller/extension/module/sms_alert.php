@@ -10,11 +10,11 @@ class ControllerExtensionModuleSmsAlert extends Controller {
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('sms_alert', $this->request->post);
+			$this->model_setting_setting->editSetting('module_sms_alert', $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
-			$this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL'));
+			$this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], 'SSL'));
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -47,45 +47,45 @@ class ControllerExtensionModuleSmsAlert extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+			'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], 'SSL')
 		);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_module'),
-			'href' => $this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL')
+			'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], 'SSL')
 		);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('extension/module/sms_alert', 'token=' . $this->session->data['token'], 'SSL')
+			'href' => $this->url->link('extension/module/sms_alert', 'user_token=' . $this->session->data['user_token'], 'SSL')
 		);
 
-		$data['action'] = $this->url->link('extension/module/sms_alert', 'token=' . $this->session->data['token'], 'SSL');
+		$data['action'] = $this->url->link('extension/module/sms_alert', 'user_token=' . $this->session->data['user_token'], 'SSL');
 
-		$data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL');
+		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], 'SSL');
 
-		if (isset($this->request->post['sms_alert_tel'])) {
-			$data['sms_alert_tel'] = $this->request->post['sms_alert_tel'];
+		if (isset($this->request->post['module_sms_alert_tel'])) {
+			$data['sms_alert_tel'] = $this->request->post['module_sms_alert_tel'];
 		} else {
-			$data['sms_alert_tel'] = $this->config->get('sms_alert_tel');
+			$data['sms_alert_tel'] = $this->config->get('module_sms_alert_tel');
 		}
 		
-		if (isset($this->request->post['sms_alert_id'])) {
-			$data['sms_alert_id'] = $this->request->post['sms_alert_id'];
+		if (isset($this->request->post['module_sms_alert_id'])) {
+			$data['sms_alert_id'] = $this->request->post['module_sms_alert_id'];
 		} else {
-			$data['sms_alert_id'] = $this->config->get('sms_alert_id');
+			$data['sms_alert_id'] = $this->config->get('module_sms_alert_id');
 		}
 
-		if (isset($this->request->post['sms_alert_status'])) {
-			$data['sms_alert_status'] = $this->request->post['sms_alert_status'];
+		if (isset($this->request->post['module_sms_alert_status'])) {
+			$data['module_sms_alert_status'] = $this->request->post['module_sms_alert_status'];
 		} else {
-			$data['sms_alert_status'] = $this->config->get('sms_alert_status');
+			$data['module_sms_alert_status'] = $this->config->get('module_sms_alert_status');
 		}
 		
-		if (isset($this->request->post['sms_alert_processing_status'])) {
-			$data['sms_alert_processing_status'] = $this->request->post['sms_alert_processing_status'];
-		} elseif ($this->config->get('sms_alert_processing_status')) {
-			$data['sms_alert_processing_status'] = $this->config->get('sms_alert_processing_status');
+		if (isset($this->request->post['module_sms_alert_processing_status'])) {
+			$data['sms_alert_processing_status'] = $this->request->post['module_sms_alert_processing_status'];
+		} elseif ($this->config->get('module_sms_alert_processing_status')) {
+			$data['sms_alert_processing_status'] = $this->config->get('module_sms_alert_processing_status');
 		} else {
 			$data['sms_alert_processing_status'] = array();
 		}
@@ -99,7 +99,7 @@ class ControllerExtensionModuleSmsAlert extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('extension/module/sms_alert.tpl', $data));
+		$this->response->setOutput($this->load->view('extension/module/sms_alert', $data));
 	}
 
 	protected function validate() {
@@ -107,15 +107,15 @@ class ControllerExtensionModuleSmsAlert extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 		
-		if (!$this->request->post['sms_alert_tel']) {
+		if (!$this->request->post['module_sms_alert_tel']) {
 			$this->error['error_sms_alert_tel'] = $this->language->get('error_sms_alert_tel');
 		}
 		
-		if (!$this->request->post['sms_alert_id']) {
+		if (!$this->request->post['module_sms_alert_id']) {
 			$this->error['error_sms_alert_id'] = $this->language->get('error_sms_alert_id');
 		}
 		
-		if (!isset($this->request->post['sms_alert_processing_status'])) {
+		if (!isset($this->request->post['module_sms_alert_processing_status'])) {
 			$this->error['error_sms_alert_processing_status'] = $this->language->get('error_sms_alert_processing_status');
 		}
 		
@@ -124,15 +124,15 @@ class ControllerExtensionModuleSmsAlert extends Controller {
 	}
 	
 	public function install() {
-		$this->load->model('extension/event');
+		$this->load->model('setting/event');
 
-		$this->model_extension_event->addEvent('sms_alert', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/module/sms_alert');
+		$this->model_setting_event->addEvent('sms_alert', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/module/sms_alert');
 	}
 
 	public function uninstall() {
-		$this->load->model('extension/event');
+		$this->load->model('setting/event');
 
-		$this->model_extension_event->deleteEvent('sms_alert');
+		$this->model_setting_event->deleteEventByCode('sms_alert');
 	}
 	
 }

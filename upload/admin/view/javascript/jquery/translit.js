@@ -1,3 +1,5 @@
+// version 3x for opencart-russia.ru
+
 var ru2en = {
   fromChars : 'абвгдезиклмнопрстуфыэйхёц',
   toChars : 'abvgdeziklmnoprstufyejhec',
@@ -38,21 +40,21 @@ function setTranslit(src, dst, force){
   if ($('input[name="'+src+'"]').val() != undefined){
     $('input[name="'+src+'"]').change(function(){
       var srcVal = $('input[name="'+src+'"]').val();
-      var dstVal = $('input[name="'+dst+'"]').val();
+      var dstVal = $('input[name ^="'+dst+'"]').val();
 
       if (force || (dstVal == ''))
-        $('input[name="'+dst+'"]').val(ru2en.translit(srcVal));
+        $('input[name ^="'+dst+'"]').val(ru2en.translit(srcVal));
     });
   }
 }
 
 $(document).ready(function(){
   // Products
-  setTranslit('product_description\\[1\\]\\[name\\]', 'keyword', false);
+  setTranslit('product_description\\[1\\]\\[name\\]', 'product_seo_url', false);
   // Info Articles
-  setTranslit('information_description\\[1\\]\\[title\\]', 'keyword', false);
+  setTranslit('information_description\\[1\\]\\[title\\]', 'information_seo_url', false);
   // Categories
-  setTranslit('category_description\\[1\\]\\[name\\]', 'keyword', false);
+  setTranslit('category_description\\[1\\]\\[name\\]', 'category_seo_url', false);
   // Manufacturer
-  setTranslit('name', 'keyword', true);
+  setTranslit('name', 'manufacturer_seo_url', true);
 });
