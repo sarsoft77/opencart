@@ -52,3 +52,8 @@
 
 # IDE Project files
 /.idea
+
+# Eclipse Project files
+/.settings
+/.buildpath
+/.project
