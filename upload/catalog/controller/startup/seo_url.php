@@ -1,4 +1,4 @@
-<?php
+<?php // ==========================================  seo_url.php v.030717 opencart-russia.ru ===============================
 class ControllerStartupSeoUrl extends Controller {
 	public function index() {
 		// Add rewrite to url class
@@ -62,6 +62,53 @@ class ControllerStartupSeoUrl extends Controller {
 					$this->request->get['route'] = 'information/information';
 				}
 			}
+
+			if (isset($this->request->get['route'])) {
+				return new Action($this->request->get['route']);
+			}
+			
+		  // Redirect 301	
+		} elseif (isset($this->request->get['route']) && empty($this->request->post) && !isset($this->request->get['token']) && $this->config->get('config_seo_url')) {
+			$arg = '';
+			$cat_path = false;
+			if ($this->request->get['route'] == 'product/product' && isset($this->request->get['product_id'])) {
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'product_id=" . (int)$this->request->get['product_id'] . "'");	
+				if ($query->num_rows && $query->row['keyword'] /**/ ) {
+					$this->request->get['route'] = 'product_id=' . $this->request->get['product_id'];
+				}
+			} elseif ($this->request->get['route'] == 'product/category' && isset($this->request->get['path'])) {
+				$categorys_id = explode('_', $this->request->get['path']);
+				$cat_path = '';
+				foreach ($categorys_id as $category_id) {
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category_id . "'");	
+					if ($query->num_rows && $query->row['keyword'] /**/ ) {
+						$cat_path .= '/' . $query->row['keyword'];
+					} else {
+						$cat_path = false;
+						break;
+					}
+				}
+				$arg = trim($cat_path, '/');
+				if (isset($this->request->get['page'])) $arg = $arg . '?page=' . (int)$this->request->get['page'];
+			} elseif ($this->request->get['route'] == 'product/manufacturer/info' && isset($this->request->get['manufacturer_id'])) {
+				$this->request->get['route'] = 'manufacturer_id=' . $this->request->get['manufacturer_id'];
+				if (isset($this->request->get['page'])) $arg = $arg . '?page=' . (int)$this->request->get['page'];
+			} elseif ($this->request->get['route'] == 'information/information' && isset($this->request->get['information_id'])) {
+				$this->request->get['route'] = 'information_id=' . $this->request->get['information_id'];
+			} elseif (sizeof($this->request->get) > 1) {
+				$args = '?' . str_replace("route=" . $this->request->get['route'].'&amp;', "", $this->request->server['QUERY_STRING']);
+				$arg = str_replace('&amp;', '&', $args);
+			}
+
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE query = '" . $this->db->escape($this->request->get['route']) . "'");
+			
+			if ($query->num_rows && $query->row['keyword']) /**/ {
+				$this->response->redirect($query->row['keyword'] . $arg, 301);
+			} elseif ($cat_path) {
+				$this->response->redirect($arg, 301);
+			} elseif ($this->request->get['route'] == 'common/home') {
+				$this->response->redirect(HTTP_SERVER . $arg, 301);
+			}
 		}
 	}
 
@@ -100,6 +147,11 @@ class ControllerStartupSeoUrl extends Controller {
 					}
 
 					unset($data[$key]);
+				} elseif ($key == 'route') {
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($data['route']) . "'");
+					if ($query->num_rows) /**/ {
+						$url .= '/' . $query->row['keyword'];
+					}
 				}
 			}
 		}
