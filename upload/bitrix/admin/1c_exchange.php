@@ -293,7 +293,7 @@ if (isset($request->get['mode']) && $request->get['type'] == 'catalog') {
 //	exit;
 }
 
-mytrace(array('$request' => $request));
+// mytrace(array('$request' => $request));
 
 
 if (isset($request->get['module'])) {

@@ -1,6 +1,6 @@
 <?php
 
-class ModelExtensionExchange1c extends Model {
+class ModelExtension1CExchange1c extends Model {
 
     // VARS
     private $STORE_ID = 0;
