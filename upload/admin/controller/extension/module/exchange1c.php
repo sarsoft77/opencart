@@ -202,14 +202,14 @@ class ControllerExtensionModuleExchange1c extends Controller {
     /**
      * Формирует форму кнопки
      * 	onclick="$('#form-exchange1c').attr('action','<?php echo $refresh; ?>&refresh=1').submit()"
-     * 	$('#form-exchange1c').attr('action','http://opencart2302.ptr-print.ru/admin/index.php?route=extension/module/exchange1c/refresh&token=fza09Op5TOrxudmiD58SDKDpWBr18mNi&refresh=1').submit()
+     * 	$('#form-exchange1c').attr('action','http://opencart2302.ptr-print.ru/admin/index.php?route=extension/module/exchange1c/refresh&user_token=fza09Op5TOrxudmiD58SDKDpWBr18mNi&refresh=1').submit()
      */
     private function htmlButton($name, $param) {
 
         $onclick = '';
         if (!empty($param['ver'])) {
             $onclick = ' onclick="update(' . $param['ver'] . ')"';
-            //$onclick = ' onclick="$(\'#form-exchange1c\').attr(\'action\',\'' . $this->url->link('extension/module/exchange1c/update', 'token=' . $this->session->data['token'], 'SSL') . '&version=' . $param['ver'] . '\').submit()"';
+            //$onclick = ' onclick="$(\'#form-exchange1c\').attr(\'action\',\'' . $this->url->link('extension/module/exchange1c/update', 'user_token=' . $this->session->data['user_token'], 'SSL') . '&version=' . $param['ver'] . '\').submit()"';
         }
         $tmpl = '<button' . $onclick . ' id="exchange1c-button-' . $name . '" class="btn btn-primary" type="button" data-loading-text="' . $this->language->get('entry_button_' . $name) . '">';
         $tmpl .= '<i class="fa fa-trash-o fa-lg"></i> ' . $this->language->get('text_button_' . $name) . '</button>';
@@ -337,7 +337,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $this->load->model('setting/setting');
 
         $data['text_info'] = "";
-        $this->load->model('extension/exchange1c');
+        $this->load->model('extension/exchange1c/exchange1c');
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 
             // При нажатии кнопки сохранить
@@ -347,20 +347,20 @@ class ControllerExtensionModuleExchange1c extends Controller {
             $settings['exchange_statistics'] = $this->config->get('exchange_statistics');
             $settings['exchange1c_table_fields'] = $this->config->get('exchange1c_table_fields');
             $settings['exchange1c_CMS_version'] = VERSION;
-            $settings['exchange1c_table_fields'] = $this->model_extension_exchange1c->defineTableFields();
+            $settings['exchange1c_table_fields'] = $this->model_extension_exchange1c_exchange1c->defineTableFields();
 
             $this->model_setting_setting->editSetting('exchange1c', $settings);
             $this->session->data['success'] = $this->language->get('text_success');
 
             if (!$refresh) {
-                $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL'));
+                $this->response->redirect($this->url->link('extension/extension', 'user_token=' . $this->session->data['user_token'], 'SSL'));
             }
 
             $data['text_info'] = "Настройки сохранены";
             $this->log("Настройки сохранены", 2);
         } else {
             $settings = $this->model_setting_setting->getSetting('exchange1c');
-            $data['text_info'] = $this->model_extension_exchange1c->checkUpdates($settings);
+            $data['text_info'] = $this->model_extension_exchange1c_exchange1c->checkUpdates($settings);
             // После обновления прочитаем настройки снова
             //$settings = $this->model_setting_setting->getSetting('exchange1c');
         }
@@ -386,7 +386,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
             $data['error_warning'] = "";
         }
         // Проверка базы данных
-        $error = $this->model_extension_exchange1c->checkDB();
+        $error = $this->model_extension_exchange1c_exchange1c->checkDB();
         if ($error) {
             $data['error_warning'] .= "<br>" . $error;
         }
@@ -398,23 +398,23 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $data['breadcrumbs'] = array();
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true),
+            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true),
             'separator' => false
         );
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_module'),
-            'href' => $this->url->link('extension/extension', 'token=' . $this->session->data['token'], true),
+            'href' => $this->url->link('extension/extension', 'user_token=' . $this->session->data['user_token'], true),
             'separator' => ' :: '
         );
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('extension/module/exchange1c', 'token=' . $this->session->data['token'], true),
+            'href' => $this->url->link('extension/module/exchange1c', 'user_token=' . $this->session->data['user_token'], true),
             'separator' => ' :: '
         );
-        $data['token'] = $this->session->data['token'];
-        $data['refresh'] = $this->url->link('extension/module/exchange1c/refresh', 'token=' . $this->session->data['token'], true);
-        $data['action'] = $this->url->link('extension/module/exchange1c', 'token=' . $this->session->data['token'], true);
-        $data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'], true);
+        $data['user_token'] = $this->session->data['user_token'];
+        $data['refresh'] = $this->url->link('extension/module/exchange1c/refresh', 'user_token=' . $this->session->data['user_token'], true);
+        $data['action'] = $this->url->link('extension/module/exchange1c', 'user_token=' . $this->session->data['user_token'], true);
+        $data['cancel'] = $this->url->link('extension/extension', 'user_token=' . $this->session->data['user_token'], true);
 
         /**
          * ГЕНЕРАЦИЯ ШАБЛОНА
@@ -829,7 +829,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         }
 
         // Статистика
-        $data['statistics'] = $this->model_extension_exchange1c->getStatistics();
+        $data['statistics'] = $this->model_extension_exchange1c_exchange1c->getStatistics();
         $data['exchange_date'] = $this->config->get('exchange1c_xml_date');
 
         // Группы покупателей
@@ -872,7 +872,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $data['upload_max_filesize'] = ini_get('upload_max_filesize');
         $data['post_max_size'] = ini_get('post_max_size');
 
-        $links_info = $this->model_extension_exchange1c->linksInfo();
+        $links_info = $this->model_extension_exchange1c_exchange1c->linksInfo();
         $data['links_product_info'] = $links_info['product_to_1c'];
         $data['links_category_info'] = $links_info['category_to_1c'];
         $data['links_manufacturer_info'] = $links_info['manufacturer_to_1c'];
@@ -909,8 +909,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
             $this->model_setting_extension->install('module', 'exchange1c');
         }
 
-        $this->load->model('extension/exchange1c');
-        $this->model_extension_exchange1c->setEvents();
+        $this->load->model('extension/exchange1c/exchange1c');
+        $this->model_extension_exchange1c_exchange1c->setEvents();
         $module_version = "1.6.4.1";
 
         // Создадим директорию в кэше
@@ -930,7 +930,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $settings['exchange1c_seo_product_price'] = '[product_price]';
         $settings['exchange1c_seo_manufacturer'] = '[manufacturer]';
         $settings['exchange1c_seo_sku'] = '[sku]';
-        $settings['exchange1c_table_fields'] = $this->model_extension_exchange1c->defineTableFields();
+        $settings['exchange1c_table_fields'] = $this->model_extension_exchange1c_exchange1c->defineTableFields();
 
         $this->model_setting_setting->editSetting('exchange1c', $settings);
 
@@ -1185,7 +1185,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         );
 
 
-        $message .= $this->model_extension_exchange1c->checkUpdates($settings);
+        $message .= $this->model_extension_exchange1c_exchange1c->checkUpdates($settings);
 
         $this->log->write("Включен модуль " . $this->module_name . " версии " . $settings['exchange1c_version']);
         $this->log->write($message);
@@ -1200,8 +1200,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
      */
     public function uninstall() {
 
-        $this->load->model('extension/exchange1c');
-        $table_fields = $this->model_extension_exchange1c->defineTableFields();
+        $this->load->model('extension/exchange1c/exchange1c');
+        $table_fields = $this->model_extension_exchange1c_exchange1c->defineTableFields();
 
         $this->load->model('setting/event');
         $this->model_setting_event->deleteEvent('exchange1c');
@@ -1210,7 +1210,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $this->model_setting_setting->deleteSetting('exchange1c');
 
         $this->load->model('setting/module');
-        $this->model_extension_module->deleteModule('exchange1c');
+        $this->model_setting_module->deleteModule('exchange1c');
 
         // Удалим директорию в кэше
         $cache = DIR_CACHE . 'exchange1c/';
@@ -1420,7 +1420,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
+            $this->load->model('extension/exchange1c/exchange1c');
             $this->log($ver, 2);
             $result = "Пока не реализовано";
             if (!$result) {
@@ -1447,8 +1447,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
-            $result = $this->model_extension_exchange1c->cleanDB();
+            $this->load->model('extension/exchange1c/exchange1c');
+            $result = $this->model_extension_exchange1c_exchange1c->cleanDB();
             if (!$result) {
                 $json['error'] = "Таблицы не были очищены";
             } else {
@@ -1499,8 +1499,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
-            $result = $this->model_extension_exchange1c->cleanOldImages("import_files/");
+            $this->load->model('extension/exchange1c/exchange1c');
+            $result = $this->model_extension_exchange1c_exchange1c->cleanOldImages("import_files/");
             if ($result['error']) {
                 $json['error'] = $result['error'];
             } else {
@@ -1525,7 +1525,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
+            $this->load->model('extension/exchange1c/exchange1c');
 
             $result = $this->cleanCache();
 
@@ -1554,8 +1554,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
-            $result = $this->model_extension_exchange1c->seoGenerate();
+            $this->load->model('extension/exchange1c/exchange1c');
+            $result = $this->model_extension_exchange1c_exchange1c->seoGenerate();
             if ($result['error']) {
                 $json['error'] = "Ошибка формирования SEO\n" . $result['error'];
             } else {
@@ -1581,8 +1581,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
-            $result = $this->model_extension_exchange1c->removeDoublesLinks();
+            $this->load->model('extension/exchange1c/exchange1c');
+            $result = $this->model_extension_exchange1c_exchange1c->removeDoublesLinks();
             if ($result['error']) {
                 $json['error'] = "Ошибка удаления ссылок\n" . $result['error'];
             } else {
@@ -1612,8 +1612,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
-            $result = $this->model_extension_exchange1c->removeUnisedManufacturers();
+            $this->load->model('extension/exchange1c/exchange1c');
+            $result = $this->model_extension_exchange1c_exchange1c->removeUnisedManufacturers();
             if ($result['error']) {
                 $json['error'] = "Ошибка удаления:\n" . $result['error'];
             } else {
@@ -1639,8 +1639,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
-            $result = $this->model_extension_exchange1c->deleteImportData();
+            $this->load->model('extension/exchange1c/exchange1c');
+            $result = $this->model_extension_exchange1c_exchange1c->deleteImportData();
             if ($result['error']) {
                 $json['error'] = "ERROR: 1003";
             } else {
@@ -1669,8 +1669,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $json = array();
         // Проверим разрешение
         if ($this->user->hasPermission('modify', 'extension/module/exchange1c')) {
-            $this->load->model('extension/exchange1c');
-            $result = $this->model_extension_exchange1c->deleteDoubleUrlAlias();
+            $this->load->model('extension/exchange1c/exchange1c');
+            $result = $this->model_extension_exchange1c_exchange1c->deleteDoubleUrlAlias();
             if ($result['error']) {
                 $json['error'] = "Ошибка при удалении дублей URL: " . $result['error'];
             } else {
@@ -1949,8 +1949,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
      */
     public function downloadOrders() {
 
-        $this->load->model('extension/exchange1c');
-        $orders = $this->model_extension_exchange1c->queryOrders(
+        $this->load->model('extension/exchange1c/exchange1c');
+        $orders = $this->model_extension_exchange1c_exchange1c->queryOrders(
                 array(
                     'from_date' => $this->config->get('exchange1c_order_date')
                     , 'new_status' => $this->config->get('exchange1c_order_status')
@@ -2443,14 +2443,14 @@ class ControllerExtensionModuleExchange1c extends Controller {
 
         $this->log($xmlfiles, 2);
 
-        $this->load->model('extension/exchange1c');
+        $this->load->model('extension/exchange1c/exchange1c');
 
         foreach ($xmlfiles as $xmlfile) {
 
             $importFile = $cache . $xmlfile;
 
             // Загружаем файл
-            $error = $this->model_extension_exchange1c->importFile($importFile, $this->detectFileType($importFile));
+            $error = $this->model_extension_exchange1c_exchange1c->importFile($importFile, $this->detectFileType($importFile));
 
             if ($this->config->get('exchange1c_not_delete_files_after_import') != 1) {
                 @unlink($importFile);
@@ -2509,10 +2509,10 @@ class ControllerExtensionModuleExchange1c extends Controller {
             return "ERROR: 1002";
         }
 
-        $this->load->model('extension/exchange1c');
+        $this->load->model('extension/exchange1c/exchange1c');
 
         // Загружаем файл
-        $error = $this->model_extension_exchange1c->importFile($importFile, $this->detectFileType($importFile));
+        $error = $this->model_extension_exchange1c_exchange1c->importFile($importFile, $this->detectFileType($importFile));
 
         if ($this->config->get('exchange1c_not_delete_files_after_import') != 1) {
             @unlink($importFile);
@@ -2673,9 +2673,9 @@ class ControllerExtensionModuleExchange1c extends Controller {
         if (!$this->checkAuthKey(true))
             exit;
 
-        $this->load->model('extension/exchange1c');
+        $this->load->model('extension/exchange1c/exchange1c');
 
-        $orders = $this->model_extension_exchange1c->queryOrders(
+        $orders = $this->model_extension_exchange1c_exchange1c->queryOrders(
                 array(
                     'from_date' => $this->config->get('exchange1c_order_date')
                     , 'new_status' => $this->config->get('exchange1c_order_status')
@@ -2705,12 +2705,12 @@ class ControllerExtensionModuleExchange1c extends Controller {
     public function modeOrdersChangeStatus() {
         if (!$this->checkAuthKey(true))
             exit;
-        $this->load->model('extension/exchange1c');
+        $this->load->model('extension/exchange1c/exchange1c');
 
-        $orders_export = $this->model_extension_exchange1c->queryOrdersExport();
+        $orders_export = $this->model_extension_exchange1c_exchange1c->queryOrdersExport();
 
         // Только у новых заказов изменим статус
-        $result = $this->model_extension_exchange1c->queryOrdersChangeStatus($orders_export);
+        $result = $this->model_extension_exchange1c_exchange1c->queryOrdersChangeStatus($orders_export);
 
         if ($result) {
 
@@ -2840,8 +2840,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $this->log("route = " . $route);
         foreach ($products as $product_id) {
             $this->log("Удаление связи с товаром product_id = " . $product_id);
-            $this->load->model('extension/exchange1c');
-            $this->model_extension_exchange1c->deleteLinkProduct($product_id);
+            $this->load->model('extension/exchange1c/exchange1c');
+            $this->model_extension_exchange1c_exchange1c->deleteLinkProduct($product_id);
         }
     }
 
@@ -2854,8 +2854,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $this->log("route = " . $route);
         foreach ($categories as $category_id) {
             $this->log("Удаление связи с категорией category_id = " . $category_id);
-            $this->load->model('extension/exchange1c');
-            $this->model_extension_exchange1c->deleteLinkCategory($category_id);
+            $this->load->model('extension/exchange1c/exchange1c');
+            $this->model_extension_exchange1c_exchange1c->deleteLinkCategory($category_id);
         }
     }
 
@@ -2869,8 +2869,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         foreach ($manufacturers as $manufacturer_id) {
             $this->log("Удаление связи с производителем manufacturer_id = " . $manufacturer_id);
             $this->log("route = " . $route);
-            $this->load->model('extension/exchange1c');
-            $this->model_extension_exchange1c->deleteLinkManufacturer($manufacturer_id);
+            $this->load->model('extension/exchange1c/exchange1c');
+            $this->model_extension_exchange1c_exchange1c->deleteLinkManufacturer($manufacturer_id);
         }
     }
 
@@ -2884,8 +2884,8 @@ class ControllerExtensionModuleExchange1c extends Controller {
         foreach ($attributes as $attribute_id) {
             $this->log("Удаление связи с атрибутом attribute_id = " . $attribute_id);
             $this->log("route = " . $route);
-            $this->load->model('extension/exchange1c');
-            $this->model_extension_exchange1c->deleteLinkAttribute($attribute_id);
+            $this->load->model('extension/exchange1c/exchange1c');
+            $this->model_extension_exchange1c_exchange1c->deleteLinkAttribute($attribute_id);
         }
     }
 
@@ -2935,7 +2935,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $zip->addFile(DIR_APPLICATION . 'controller/extension/module/exchange1c.php', 'upload/admin/controller/extension/module/exchange1c.php');
         $zip->addFile(DIR_APPLICATION . 'language/en-gb/extension/module/exchange1c.php', 'upload/admin/language/en-gb/extension/module/exchange1c.php');
         $zip->addFile(DIR_APPLICATION . 'language/ru-ru/extension/module/exchange1c.php', 'upload/admin/language/ru-ru/extension/module/exchange1c.php');
-        $zip->addFile(DIR_APPLICATION . 'model/extension/exchange1c.php', 'upload/admin/model/extension/exchange1c.php');
+        $zip->addFile(DIR_APPLICATION . 'model/extension/exchange1c/exchange1c.php', 'upload/admin/model/extension/exchange1c/exchange1c.php');
         $zip->addFile(DIR_APPLICATION . 'view/template/extension/module/exchange1c.tpl', 'upload/admin/view/template/extension/module/exchange1c.tpl');
         $zip->addFile(DIR_APPLICATION . '../export/exchange1c.php', 'upload/export/exchange1c.php');
         $zip->addFile(DIR_APPLICATION . '../bitrix/admin/1c_exchange.php', 'upload/bitrix/admin/1c_exchange.php');
@@ -3015,7 +3015,7 @@ class ControllerExtensionModuleExchange1c extends Controller {
         $files[] = DIR_APPLICATION . 'controller/extension/module/exchange1c.php';
         $files[] = DIR_APPLICATION . 'language/en-gb/extension/module/exchange1c.php';
         $files[] = DIR_APPLICATION . 'language/ru-ru/extension/module/exchange1c.php';
-        $files[] = DIR_APPLICATION . 'model/extension/exchange1c.php';
+        $files[] = DIR_APPLICATION . 'model/extension/exchange1c/exchange1c.php';
         $files[] = DIR_APPLICATION . 'view/template/extension/module/exchange1c.tpl';
         $files[] = substr(DIR_APPLICATION, 0, strlen(DIR_APPLICATION) - 6) . 'export/exchange1c.php';
         foreach ($files as $file) {

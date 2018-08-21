@@ -37,14 +37,14 @@
 		{% endif %}
 		<div id="danger" style="display: none">
 			<div class="alert alert-danger">
-				<i class="fa fa-exclamation-circle"></i>&nbsp;Р’РќРРњРђРќРР•! РјРѕРґСѓР»СЊ
-				РѕС‚РєР»СЋС‡РµРЅ. РћР±РјРµРЅ С‡РµСЂРµР· http/https СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ Р±СѓРґРµС‚!
+				<i class="fa fa-exclamation-circle"></i>&nbsp;ВНИМАНИЕ! модуль
+				отключен. Обмен через http/https работать не будет!
 			</div>
 		</div>
 		<div id="modification" style="display: none">
 			<div class="alert alert-danger">
-				<i class="fa fa-exclamation-circle"></i>&nbsp;Р’РќРРњРђРќРР•! РќР°СЃС‚СЂРѕР№РєРё РЅРµ
-				СЃРѕС…СЂР°РЅРµРЅС‹!
+				<i class="fa fa-exclamation-circle"></i>&nbsp;ВНИМАНИЕ! Настройки не
+				сохранены!
 			</div>
 		</div>
 		{% if text_info %}
@@ -62,7 +62,7 @@
 			</div>
 			<div class="panel-body">
 				<form
-					action="index.php?route=extension/module/exchange1c/downloadOrders&token={{ token }}"
+					action="index.php?route=extension/module/exchange1c/downloadOrders&user_token={{ user_token }}"
 					method="post" enctype="multipart/form-data"
 					id="form-download-orders" class="form-horizontal"></form>
 				<form action="{{ action }}" method="post"
@@ -84,7 +84,7 @@
 					</ul>
 					<div class="tab-content">
 
-						<!-- РћРЎРќРћР’РќР«Р• -->
+						<!-- ОСНОВНЫЕ -->
 						<div class="tab-pane active" id="tab-general">
 							<div class="form-group">
 								{{ html_module_status }}
@@ -160,7 +160,7 @@
 						</div>
 						<!-- tab general -->
 
-						<!-- РўРћР’РђР Р« -->
+						<!-- ТОВАРЫ -->
 						<div class="tab-pane" id="tab-product">
 
 							<div class="panel-heading">
@@ -180,7 +180,7 @@
 								</ul>
 								<div class="tab-content">
 
-									<!-- РћРЎРќРћР’РќР«Р• -->
+									<!-- ОСНОВНЫЕ -->
 									<div class="tab-pane active" id="tab-product-general">
 										<fieldset id="product_sync">
 											<legend>
@@ -253,43 +253,43 @@
 													</thead>
 													<tbody>
 														<tr>
-															<td>РРґ</td>
+															<td>Ид</td>
 															<td>{{ lang.desc_product_guid }}</td>
 															<td>1c_id</td>
 															<td>product_to_1c</td>
 														</tr>
 														<tr>
-															<td>РђСЂС‚РёРєСѓР»</td>
+															<td>Артикул</td>
 															<td>{{ lang.desc_product_sku }}</td>
 															<td>sku, model</td>
 															<td>product</td>
 														</tr>
 														<tr>
-															<td>РЁС‚СЂРёС…РєРѕРґ</td>
+															<td>Штрихкод</td>
 															<td>{{ lang.desc_product_ean }}</td>
 															<td>ean</td>
 															<td>product</td>
 														</tr>
 														<tr>
-															<td>Р‘Р°Р·РѕРІР°СЏР•РґРёРЅРёС†Р°</td>
+															<td>БазоваяЕдиница</td>
 															<td>{{ lang.desc_product_unit }}</td>
 															<td>unit_id</td>
 															<td>product_unit, product_quantity, product_price</td>
 														</tr>
 														<tr>
-															<td>РџРѕР»РЅРѕРµРќР°РёРјРµРЅРѕРІР°РЅРёРµ</td>
+															<td>ПолноеНаименование</td>
 															<td>{{ lang.desc_product_fullname }}</td>
 															<td>name</td>
 															<td>product</td>
 														</tr>
 														<tr>
-															<td>РћРїРёСЃР°РЅРёРµ</td>
+															<td>Описание</td>
 															<td>{{ lang.desc_product_description }}</td>
 															<td>description</td>
 															<td>product_description</td>
 														</tr>
 														<tr>
-															<td>РР·РіРѕС‚РѕРІРёС‚РµР»СЊ</td>
+															<td>Изготовитель</td>
 															<td>{{ lang.desc_product_manufacturer }}</td>
 															<td>manufacturer_id</td>
 															<td>product</td>
@@ -302,7 +302,7 @@
 									</div>
 									<!-- tab-product-general -->
 
-									<!-- РР—РћР‘Р РђР–Р•РќРРЇ -->
+									<!-- ИЗОБРАЖЕНИЯ -->
 									<div class="tab-pane" id="tab-product-images">
 										<fieldset id="product_images">
 											<legend>
@@ -321,7 +321,7 @@
 									</div>
 									<!-- tab-product-images -->
 
-									<!-- РЎР’РћР™РЎРўР’Рђ (РђРўР РР‘РЈРўР«) -->
+									<!-- СВОЙСТВА (АТРИБУТЫ) -->
 									<div class="tab-pane" id="tab-product-properties">
 										<fieldset id="product_properties">
 											<div class="form-group">
@@ -358,7 +358,7 @@
 									</div>
 									<!-- tab-product-properties -->
 
-									<!-- Р Р•РљР’РР—РРўР« -->
+									<!-- РЕКВИЗИТЫ -->
 									<div class="tab-pane" id="tab-product-requisites">
 										<legend>
 											{{ lang.legend_product_requisite_std_from_ts }}
@@ -376,37 +376,37 @@
 												</thead>
 												<tbody>
 													<tr>
-														<td>Р’РµСЃ</td>
+														<td>Вес</td>
 														<td>{{ lang.desc_product_req_weight }}</td>
 														<td>weight</td>
-														<td>Р’РµСЃ</td>
+														<td>Вес</td>
 													</tr>
 													<tr>
-														<td>РўРёРїРќРѕРјРµРЅРєР»Р°С‚СѓСЂС‹</td>
+														<td>ТипНоменклатуры</td>
 														<td>{{ lang.desc_product_req_type }}</td>
 														<td></td>
 														<td></td>
 													</tr>
 													<tr>
-														<td>Р’РёРґРќРѕРјРµРЅРєР»Р°С‚СѓСЂС‹</td>
+														<td>ВидНоменклатуры</td>
 														<td>{{ lang.desc_product_req_view }}</td>
 														<td></td>
 														<td></td>
 													</tr>
 													<tr>
-														<td>РћРїРёСЃР°РЅРёРµР’Р¤РѕСЂРјР°С‚РµHTML</td>
+														<td>ОписаниеВФорматеHTML</td>
 														<td>{{ lang.desc_product_req_desc_html }}</td>
 														<td></td>
 														<td></td>
 													</tr>
 													<tr>
-														<td>РџРѕР»РЅРѕРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ</td>
+														<td>Полное наименование</td>
 														<td>{{ lang.desc_product_req_fullname }}</td>
 														<td>name</td>
-														<td>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</td>
+														<td>Наименование</td>
 													</tr>
 													<tr>
-														<td>РљРѕРґ</td>
+														<td>Код</td>
 														<td>{{ lang.desc_product_req_code }}</td>
 														<td>id</td>
 														<td>{{ lang.text_hide }}</td>
@@ -424,7 +424,7 @@
 									</div>
 									<!-- tab-product-requisites -->
 
-									<!-- РҐРђР РђРљРўР•Р РРЎРўРРљР (РћРџР¦РР) -->
+									<!-- ХАРАКТЕРИСТИКИ (ОПЦИИ) -->
 									<div class="tab-pane" id="tab-product-features">
 										<fieldset>
 											<div class="form-group">
@@ -463,9 +463,9 @@
 							<!-- panel-body -->
 
 						</div>
-						<!-- РўРћР’РђР Р« -->
+						<!-- ТОВАРЫ -->
 
-						<!-- РљРђРўР•Р“РћР РР -->
+						<!-- КАТЕГОРИИ -->
 						<div class="tab-pane" id="tab-category">
 							<div class="form-group">
 								{{ html_categories_no_import}}
@@ -509,16 +509,16 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td>РљР°СЂС‚РёРЅРєР°</td>
+											<td>Картинка</td>
 											<td>{{ lang.desc_category_prop_image }}</td>
 											<td>image</td>
-											<td>РљР°СЂС‚РёРЅРєР°</td>
+											<td>Картинка</td>
 										</tr>
 										<tr>
-											<td>РЎРѕСЂС‚РёСЂРѕРІРєР°</td>
+											<td>Сортировка</td>
 											<td>{{ lang.desc_category_prop_sort_order }}</td>
 											<td>sort_order</td>
-											<td>РЎРѕСЂС‚РёСЂРѕРІРєР°</td>
+											<td>Сортировка</td>
 										</tr>
 									</tbody>
 								</table>
@@ -537,9 +537,9 @@
 							<!-- table -->
 
 						</div>
-						<!-- РљРђРўР•Р“РћР РР -->
+						<!-- КАТЕГОРИИ -->
 
-						<!-- Р¦Р•РќР« -->
+						<!-- ЦЕНЫ -->
 						<div class="tab-pane" id="tab-prices">
 							<div class="form-group">
 								{{ html_product_price_no_import}}
@@ -575,7 +575,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										price_row 0
+										{% set price_row=0 %}
 										{% for obj in exchange1c_price_type %}
 										<tr id="exchange1c_price_type_row{{ price_row }}">
 											<td class="text-left"><input class="form-control"
@@ -585,29 +585,28 @@
 											<td class="text-left"><input class="form-control"
 												type="text"
 												name="exchange1c_price_type[{{ price_row }}][guid]"
-												value="{{ obj.guid ? obj.guid : }} ''" /></td>
+												value="{{ obj.guid ? obj.guid : '' }}" /></td>
 											<td class="text-left"><select class="form-control"
 												name="exchange1c_price_type[{{ price_row }}][customer_group_id]">
 													{% for customer_group in customer_groups %}
-													{% if customer_group.customer_group_id  is  obj.customer_group_id %}
+													{% if customer_group.customer_group_id  ==  obj.customer_group_id %}
 													<option value="{{ customer_group.customer_group_id }}"
 														selected="selected">{{ customer_group.name }}</option>
-													{% endfor %}
-													{% endif %}
 													{% else %}
 													<option value="{{ customer_group.customer_group_id }}">{{ customer_group.name }}</option>
+													{% endif %}
 													{% endfor %}
 
 											</select></td>
 											<td class="text-left"><select class="form-control"
 												name="exchange1c_price_type[{{ price_row }}][table_price]">
 													{% for table_price in table_prices %}
-													{% if table_price.name  is  obj.table_price %}
+													{% if table_price.name  ==  obj.table_price %}
 													<option value="{{ table_price.name }}" selected="selected">{{ table_price.desc }}</option>
-													{% endfor %}
-													{% endif %}
 													{% else %}
-													<option value="{{ table_price.name }}">{{ table_price.desc }}</option></td>
+													<option value="{{ table_price.name }}">{{ table_price.desc }}</option>
+													{% endif %}
+													{% endfor %}</td>
 											<td class="text-center"><input class="form-control"
 												type="text"
 												name="exchange1c_price_type[{{ price_row }}][quantity]"
@@ -624,8 +623,8 @@
 												</button>
 											</td>
 										</tr>
-										{% $price_row = $price_row + 1 %}
-
+										{% set price_row = price_row+1 %}
+										{% endfor %}
 									</tbody>
 									<tfoot>
 										{% if customer_groups %}
@@ -658,7 +657,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										currency_row 0
+										{% set currency_row=0 %}
 										{% for config_currency in exchange1c_currency %}
 										<tr id="exchange1c_currency_row{{ currency_row }}">
 											<td class="text-left"><input class="form-control"
@@ -669,13 +668,12 @@
 												id="currency_id"
 												name="exchange1c_currency[{{ currency_row }}][currency_id]">
 													{% for currency in currencies %}
-													{% if currency.currency_id  is  config_currency.currency_id %}
+													{% if currency.currency_id  ==  config_currency.currency_id %}
 													<option value="{{ currency.currency_id }}"
 														selected="selected">{{ currency.title }}</option>
-													{% endfor %}
-													{% endif %}
 													{% else %}
 													<option value="{{ currency.currency_id }}">{{ currency.title }}</option>
+													{% endif %}
 													{% endfor %}</td>
 											<td class="text-center">
 												<button type="button" data-toggle="tooltip"
@@ -685,11 +683,11 @@
 												</button>
 											</td>
 										</tr>
-										{% $currency_row = $currency_row + 1 %}
-
+										{% set currency_row=currency_row+1 %}
+										{% endfor %}
 									</tbody>
 									<tfoot>
-										{% if count(currencies )%}
+										{% if currencies %}
 										<tr>
 											<td colspan="2"></td>
 											<td class="text-center">
@@ -712,9 +710,9 @@
 								{{ html_currency_convert}}
 							</div>
 						</div>
-						<!-- Р¦Р•РќР« -->
+						<!-- ЦЕНЫ -->
 
-						<!-- РћРЎРўРђРўРљР -->
+						<!-- ОСТАТКИ -->
 						<div class="tab-pane" id="tab-stock">
 							<legend>
 								{{ lang.legend_stock }}
@@ -732,11 +730,11 @@
 								{{ html_flush_quantity}}
 							</div>
 						</div>
-						<!-- РћРЎРўРђРўРљР -->
+						<!-- ОСТАТКИ -->
 
 						<!-- SEO -->
 						<div class="tab-pane" id="tab-seo">
-							<!-- SEO С‚РѕРІР°СЂ -->
+							<!-- SEO товар -->
 							<fieldset>
 								<legend>
 									{{ lang.legend_generate_seo }}
@@ -765,7 +763,7 @@
 									{{ html_seo_product_meta_title }}
 									{{ html_seo_product_meta_title_template }}
 								</div>
-								{% ifhtml_seo_product_meta_h1 %}
+								{% if html_seo_product_meta_h1 %}
 								<div class="form-group">
 									{{ html_seo_product_meta_h1}}
 									{{ html_seo_product_meta_h1_template}}
@@ -784,7 +782,7 @@
 									{{ html_seo_product_tag_template }}
 								</div>
 							</fieldset>
-							<!-- SEO РєР°С‚РµРіРѕСЂРёСЏ -->
+							<!-- SEO категория -->
 							<fieldset>
 								<legend>
 									{{ lang.legend_seo_category }}
@@ -804,7 +802,7 @@
 									{{ html_seo_category_meta_title }}
 									{{ html_seo_category_meta_title_template }}
 								</div>
-								{% ifhtml_seo_category_meta_h1 %}
+								{% if html_seo_category_meta_h1 %}
 								<div class="form-group">
 									{{ html_seo_category_meta_h1}}
 									{{ html_seo_category_meta_h1_template}}
@@ -819,7 +817,7 @@
 									{{ html_seo_category_meta_keyword_template }}
 								</div>
 							</fieldset>
-							<!-- SEO РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ -->
+							<!-- SEO Производителя -->
 							<fieldset>
 								<legend>
 									{{ lang.legend_seo_manufacturer }}
@@ -839,7 +837,7 @@
 									{{ html_seo_manufacturer_meta_title }}
 									{{ html_seo_manufacturer_meta_title_template }}
 								</div>
-								{% ifhtml_seo_manufacturer_meta_h1 %}
+								{% if html_seo_manufacturer_meta_h1 %}
 								<div class="form-group">
 									{{ html_seo_manufacturer_meta_h1}}
 									{{ html_seo_manufacturer_meta_h1_template}}
@@ -857,7 +855,7 @@
 						</div>
 						<!-- tab-seo -->
 
-						<!-- Р—РђРљРђР—Р« -->
+						<!-- ЗАКАЗЫ -->
 						<div class="tab-pane" id="tab-order">
 							<fieldset>
 								<legend>
@@ -932,7 +930,7 @@
 								<div class="form-group">
 									{{ html_services_in_table_product }}
 								</div>
-								<!-- РўРђР‘Р›РР¦Рђ РќР°СЃС‚СЂРѕР№РєР° РІРёРґРѕРІ РґРѕСЃС‚Р°РІРєРё РґР»СЏ СЌРєСЃРїРѕСЂС‚Р° РІ Р·Р°РєР°Р·С‹ РІ РўРЎ -->
+								<!-- ТАБЛИЦА Настройка видов доставки для экспорта в заказы в ТС -->
 								<div class="table-responsive">
 									<table id="orders_delivery"
 										class="table table-bordered table-hover">
@@ -950,12 +948,11 @@
 												<td class="text-left"><select class="form-control"
 													name="exchange1c_order_delivery[{{ row_id}}][delivery_id]">
 														{% for delivery_id, name in order_types_of_delivery %}
-														{% if data_row.delivery_id  is  delivery_id %}
+														{% if data_row.delivery_id  ==  delivery_id %}
 														<option value="{{ delivery_id}}" selected="selected">{{ name}}</option>
-														{% endfor %}
-														{% endif %}
 														{% else %}
 														<option value="{{ delivery_id}}">{{ name}}</option>
+														{% endif %}
 														{% endfor %}
 
 												</select></td>
@@ -974,8 +971,8 @@
 													</button>
 												</td>
 											</tr>
-											{% $order_delivery_row = $order_delivery_row + 1 %}
-											{# foreach #}
+											{% set order_delivery_row = order_delivery_row + 1 %}
+											{% endfor %}
 										</tbody>
 										<tfoot>
 											<tr>
@@ -989,13 +986,13 @@
 									</table>
 								</div>
 								<!-- table -->
-								<!-- РўРђР‘Р›РР¦Рђ РќР°СЃС‚СЂРѕР№РєР° РІРёРґРѕРІ РґРѕСЃС‚Р°РІРєРё РґР»СЏ СЌРєСЃРїРѕСЂС‚Р° РІ Р·Р°РєР°Р·С‹ РІ РўРЎ -->
+								<!-- ТАБЛИЦА Настройка видов доставки для экспорта в заказы в ТС -->
 							</fieldset>
 
 						</div>
 						<!-- tab-order -->
 
-						<!-- Р РЈР§РќРђРЇ РћР‘Р РђР‘РћРўРљРђ -->
+						<!-- РУЧНАЯ ОБРАБОТКА -->
 						<div class="tab-pane" id="tab-manual">
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="button-upload">
@@ -1039,7 +1036,7 @@
 						</div>
 						<!-- tab-manual -->
 
-						<!-- РРќР¤РћР РњРђР¦РРЇ -->
+						<!-- ИНФОРМАЦИЯ -->
 						<div class="tab-pane" id="tab-info">
 							<div class="form-group">
 								<label class="col-sm-2 control-label">{{ lang.entry_num_links_product_info}}</label>
@@ -1130,7 +1127,7 @@
 										</div>
 									</div>
 								</div>
-								<!-- РўРђР‘Р›РР¦Рђ РќР°СЃС‚СЂРѕР№РєР° РІРёРґРѕРІ РґРѕСЃС‚Р°РІРєРё РґР»СЏ СЌРєСЃРїРѕСЂС‚Р° РІ Р·Р°РєР°Р·С‹ РІ РўРЎ -->
+								<!-- ТАБЛИЦА Настройка видов доставки для экспорта в заказы в ТС -->
 								<div class="table-responsive">
 									<table id="orders_delivery"
 										class="table table-bordered table-hover">
@@ -1155,12 +1152,12 @@
 									</table>
 								</div>
 								<!-- table -->
-								<!-- РўРђР‘Р›РР¦Рђ РќР°СЃС‚СЂРѕР№РєР° РІРёРґРѕРІ РґРѕСЃС‚Р°РІРєРё РґР»СЏ СЌРєСЃРїРѕСЂС‚Р° РІ Р·Р°РєР°Р·С‹ РІ РўРЎ -->
+								<!-- ТАБЛИЦА Настройка видов доставки для экспорта в заказы в ТС -->
 							</fieldset>
 						</div>
 						<!-- tab-info -->
 
-						<!-- РЎР•Р Р’РРЎР«Р• Р¤РЈРќРљР¦РР -->
+						<!-- СЕРВИСЫЕ ФУНКЦИИ -->
 						<div class="tab-pane" id="tab-service">
 							<fieldset>
 								<div class="form-group">
@@ -1191,7 +1188,7 @@
 						</div>
 						<!-- tab-service -->
 
-						<!-- РЎРџР РђР’РљРђ -->
+						<!-- СПРАВКА -->
 						<div class="tab-pane" id="tab-help">
 							<fieldset>
 								<legend>ERROR CODE DESCRIPTION</legend>
@@ -1219,121 +1216,121 @@
 						</div>
 						<!-- tab-help -->
 
-						<!-- РћР‘РќРћР’Р›Р•РќРРЇ -->
+						<!-- ОБНОВЛЕНИЯ -->
 						<div class="tab-pane" id="tab-updates">
 							<fieldset>
-								<legend>1.6.4.1 РѕС‚ 10.03.2018</legend>
+								<legend>1.6.4.1 от 10.03.2018</legend>
 								<div class="form-group">
 									<ul>
-										<li>РЈРґР°Р»РµРЅР° РѕРїС†РёСЏ "РЈРІРµРґРѕРјР»СЏС‚СЊ РїРѕРєСѓРїР°С‚РµР»СЏ" РїСЂРё СЃРјРµРЅРµ
-											СЃС‚Р°С‚СѓСЃР° Р·Р°РєР°Р·Р°</li>
-										<li>РџРµСЂРµСЂР°Р±РѕС‚Р°РЅР° С„СѓРЅРєС†РёСЏ РёР·РјРµРЅРµРЅРёСЏ СЃС‚Р°С‚СѓСЃРѕРІ Р·Р°РєР°Р·РѕРІ РїРѕСЃР»Рµ
-											РѕС‚РїСЂР°РІРєРё РІ РЈРЎ, СЃС‚Р°С‚СѓСЃ Р±СѓРґРµС‚ РёР·РјРµРЅРµРЅ С‚РѕР»СЊРєРѕ Сѓ РЅРѕРІС‹С… Р·Р°РєР°Р·РѕРІ, Сѓ
-											РѕСЃС‚Р°Р»СЊРЅС‹С… Р·Р°РєР°Р·РѕРІ СЃС‚Р°С‚СѓСЃ РјРµРЅСЏРµС‚СЃСЏ РїСЂРё Р·Р°РіСЂСѓР·РєРµ Р·Р°РєР°Р·РѕРІ РѕС‚ РЈРЎ</li>
-										<li>Р”РѕР±Р°РІР»РµРЅР° РѕРїС†РёСЏ РІ РЅР°СЃС‚СЂРѕР№РєР°Р· Р·Р°РєР°Р·Р° "РЎС‚Р°С‚СѓСЃ
-											РѕС‚РјРµРЅРµРЅРЅС‹С…", СЌС‚РѕС‚ СЃС‚Р°С‚СѓСЃ Р±СѓРґРµС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅ Сѓ Р·Р°РєР°Р·РѕРІ
-											РѕС‚РјРµРЅРµРЅРЅС‹С… РІ 1РЎ:РџСЂРµРґРїСЂРёСЏС‚РёРµ РЈРќР¤ 1.6, РґР»СЏ РґСЂСѓРіРёС… РЅРµ
-											С‚РµСЃС‚РёСЂРѕРІР°Р»РѕСЃСЊ, РїСЂРёСЃС‹Р»Р°Р№С‚Рµ Р’Р°С€Рё С„Р°Р№Р»С‹ orders.xml РІРЅРµСЃСѓ
-											РїРѕРїСЂР°РІРєРё</li>
-										<li>РСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° РїСЂРё РёР·РјРµРЅРµРЅРёРё РґР°С‚С‹ РІС‹РіСЂСѓР·РєРё
-											Р·Р°РєР°Р·РѕРІ, РѕС€РёР±РєР° Р±С‹Р»Р° РІ С‚РѕРј РёР·РјРµРЅРµРЅРёСЏ РЅРµ СЃРѕС…СЂР°РЅСЏР»РёСЃСЊ, РЅРѕ
-											Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РјРµРЅСЏР»Р°СЃСЊ СЃ РјРѕРјРµРЅС‚Р° РїРѕСЃР»РµРґРЅРµР№ РІС‹РіСЂСѓР·РєРё</li>
+										<li>Удалена опция "Уведомлять покупателя" при смене
+											статуса заказа</li>
+										<li>Переработана функция изменения статусов заказов после
+											отправки в УС, статус будет изменен только у новых заказов, у
+											остальных заказов статус меняется при загрузке заказов от УС</li>
+										<li>Добавлена опция в настройказ заказа "Статус
+											отмененных", этот статус будет установлен у заказов
+											отмененных в 1С:Предприятие УНФ 1.6, для других не
+											тестировалось, присылайте Ваши файлы orders.xml внесу
+											поправки</li>
+										<li>Исправлена ошибка при изменении даты выгрузки
+											заказов, ошибка была в том изменения не сохранялись, но
+											автоматически менялась с момента последней выгрузки</li>
 									</ul>
 								</div>
-								<legend>1.6.4.3 РѕС‚ 23.04.2018</legend>
+								<legend>1.6.4.3 от 23.04.2018</legend>
 								<div class="form-group">
 									<ul>
-										<li>РЈРґР°Р»РµРЅР° РЅР°СЃС‚СЂРѕР№РєР° "РЈРґР°Р»СЏС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ С„Р°Р№Р»С‹" РЅР°
-											РІРєР»Р°РґРєРµ <strong>РћСЃРЅРѕРІРЅС‹Рµ</strong>, РІРјРµСЃС‚Рѕ РЅРµРµ РґРѕР±Р°РІР»РµРЅР°
-											РґСЂСѓРіР°СЏ
+										<li>Удалена настройка "Удалять загруженные файлы" на
+											вкладке <strong>Основные</strong>, вместо нее добавлена
+											другая
 										</li>
-										<li>Р”РѕР±Р°РІР»РµРЅР° РЅР°СЃС‚СЂРѕР№РєР° "РћС‡РёС‰Р°С‚СЊ РєСЌС€" РЅР° РІРєР»Р°РґРєРµ <strong>РћСЃРЅРѕРІРЅС‹Рµ</strong>,
-											СЌС‚Р° РѕРїС†РёСЏ Р±РѕР»РµРµ РєРѕСЂСЂРµРєС‚РЅРѕ СЂР°Р±РѕС‚Р°РµС‚
+										<li>Добавлена настройка "Очищать кэш" на вкладке <strong>Основные</strong>,
+											эта опция более корректно работает
 										</li>
-										<li>РЎРґРµР»Р°Р» РїРѕР»РЅРѕС†РµРЅРЅСѓСЋ Р·Р°РіСЂСѓР·РєСѓ Р·Р°РєР°Р·РѕРІ РёР· РЈРЎ СЃ
-											С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєР°РјРё, С‚РµРїРµСЂСЊ РЅР° СЃР°Р№С‚Рµ Р·Р°РєР°Р·С‹ РѕР±РЅРѕРІР»СЏСЋС‚СЃСЏ СЃ СѓС‡РµС‚РѕРј
-											РѕРїС†РёР№</li>
-										<li>Р—Р°РєР°Р·С‹ С‚РµРїРµСЂСЊ РјРµРЅСЏСЋС‚ СЃС‚Р°С‚СѓСЃС‹ СЃ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ С‚РѕР»СЊРєРѕ РѕРґРёРЅ
-											СЂР°Р·. РћС€РёР±РєР° Р±С‹Р»Р° СЃРІСЏР·Р°РЅР° СЃ С‚РµРј С‡С‚Рѕ РєРѕРіРґР° СЃС‚Р°С‚СѓСЃ СЃ "РћР¶РёРґР°РЅРёРµ"
-											РїРѕСЃР»Рµ РІС‹РіСЂСѓР·РєРё РјРµРЅСЏР»СЃСЏ "Р’ РѕР±СЂР°Р±РѕС‚РєРµ" Рё РїРѕСЃР»Рµ РѕР±РЅРѕРІР»РµРЅРёСЏ РµРіРѕ РІ
-											РЈРЎ РѕРЅ Р±С‹Р» РѕР±РЅРѕРІР»РµРЅ Рё РЅР° СЃР°Р№С‚Рµ, Р° РїСЂРё РІРєР»СЋС‡РµРЅРЅРѕР№ РѕРїС†РёРё
-											"Р’С‹РіСЂСѓР¶Р°С‚СЊ РёР·РјРµРЅРµРЅРЅС‹Рµ" РѕРЅ СЃРЅРѕРІР° РІС‹РіСЂСѓР¶Р°Р»СЃСЏ Рё С‚СѓС‚ СЃС‚Р°С‚СѓСЃ
-											СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹Р№ РґРѕРєСѓРјРµРЅС‚РѕРј РјРµРЅСЏР»СЃСЏ СЃРЅРѕРІР° РЅР° "Р’ РѕР±СЂР°Р±РѕС‚РєРµ".</li>
-										<li>Р’РѕСЃСЃС‚Р°РЅРѕРІРёР» СЂР°Р±РѕС‚Сѓ РЅР°СЃС‚СЂРѕР№РєРё "РљРѕРЅРІРµСЂС‚Р°С†РёСЏ РІР°Р»СЋС‚С‹" РЅР°
-											РІРєР»Р°РґРєРµ <strong>Р¦РµРЅС‹</strong>, С‚РµРїРµСЂСЊ РѕРЅР° СЂР°Р±РѕС‚Р°РµС‚, РЅРѕ РєСѓСЂСЃ
-											РїРѕРєР° Р±РµСЂРµС‚ РёР· opencart
+										<li>Сделал полноценную загрузку заказов из УС с
+											характеристиками, теперь на сайте заказы обновляются с учетом
+											опций</li>
+										<li>Заказы теперь меняют статусы с начального только один
+											раз. Ошибка была связана с тем что когда статус с "Ожидание"
+											после выгрузки менялся "В обработке" и после обновления его в
+											УС он был обновлен и на сайте, а при включенной опции
+											"Выгружать измененные" он снова выгружался и тут статус
+											установленный документом менялся снова на "В обработке".</li>
+										<li>Восстановил работу настройки "Конвертация валюты" на
+											вкладке <strong>Цены</strong>, теперь она работает, но курс
+											пока берет из opencart
 										</li>
 									</ul>
 								</div>
-								<legend>1.6.4.4 РѕС‚ 24.04.2018</legend>
+								<legend>1.6.4.4 от 24.04.2018</legend>
 								<div class="form-group">
 									<ul>
-										<li>Р”РѕР±Р°РІР»РµРЅР° С„СѓРЅРєС†РёСЏ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ СЃ РІРµСЂСЃРёРё 1.6.3</li>
-										<li>Р”РѕР±Р°РІР»РµРЅР° Рє РІРµСЂСЃРёРё Р±СѓРєРІР° Р±РµС‚С‹ РїСЂРё РёР·РјРµРЅРµРЅРёРё РІРµСЂСЃРёРё,
-											РЅР°РїСЂРёРјРµСЂ РІРµСЂСЃРёСЏ 1.6.4.4 РјРѕР¶РµС‚ РєРѕСЂСЂРµРєС‚РёСЂРѕРІР°С‚СЊСЃСЏ (1.6.4.4b1 ...
-											1.6.4.4b12) Рё РёСЃРїСЂР°РІР»СЏС‚СЊ РѕС€РёР±РєРё РµР¶РµРґРЅРµРІРЅРѕ, Рё РґР»СЏ СЌС‚РёС… РјРµР»РєРёС…
-											РѕС€РёР±РѕРє Р±СѓРґРµС‚ СѓРІРµР»РёС‡РёРІР°С‚СЊСЃСЏ СЃС‡РµС‚С‡РёРє Р±РµС‚Р° РІРµСЂСЃРёР№, РїСЂРё СЃРјРµРЅРµ
-											РІРµСЂСЃРёРё СЃС‡РµС‚С‡РёРє Р±РµС‚Р° СЃР±СЂРѕСЃРёС‚СЃСЏ. Р•СЃР»Рё РѕС€РёР±РѕРє Р±РѕР»СЊС€Рµ РЅР°Р№РґРµРЅРѕ РЅРµ
-											Р±СѓРґРµС‚, С‚Рѕ Р±РµС‚Р° РІРµСЂСЃРёСЏ РЅРµ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ. Р‘РµС‚Р° РІРµСЂСЃРёСЏ
-											РѕР·РЅР°С‡Р°РµС‚ СЃРєРѕР»СЊРєРѕ СЂР°Р· Р±С‹Р»Рѕ РІРЅРµСЃРµРЅРѕ РёР·РјРµРЅРµРЅРёР№ РґР»СЏ РёСЃРїСЂР°РІР»РµРЅРёСЏ
-											РѕС€РёР±РѕРє.</li>
-										<li>РСЃРїСЂР°РІР»РµРЅС‹ РѕС€РёР±РєРё СЃ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏРјРё</li>
-										<li>РСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё SEO
-											РїСЂРѕРёР·РІРѕРґРёС‚РµР»РµР№.</li>
+										<li>Добавлена функция для обновления с версии 1.6.3</li>
+										<li>Добавлена к версии буква беты при изменении версии,
+											например версия 1.6.4.4 может корректироваться (1.6.4.4b1 ...
+											1.6.4.4b12) и исправлять ошибки ежедневно, и для этих мелких
+											ошибок будет увеличиваться счетчик бета версий, при смене
+											версии счетчик бета сбросится. Если ошибок больше найдено не
+											будет, то бета версия не будет добавляться. Бета версия
+											означает сколько раз было внесено изменений для исправления
+											ошибок.</li>
+										<li>Исправлены ошибки с производителями</li>
+										<li>Исправлена ошибка при формировании SEO
+											производителей.</li>
 									</ul>
 								</div>
-								<legend>1.6.4.4b34 РѕС‚ 03.07.2018</legend>
+								<legend>1.6.4.4b34 от 03.07.2018</legend>
 								<div class="form-group">
 									<ul>
-										<li>РЈРґР°Р»РµРЅС‹ РІРѕРґСЏРЅС‹Рµ Р·РЅР°РєРё</li>
-										<li>Р’РєР»СЋС‡РµРЅР° СѓРґР°Р»РµРЅРёРµ РєР°С‚РµРіРѕСЂРёР№ РєРѕС‚РѕСЂС‹С… РЅРµС‚ РІ С„Р°Р№Р»Рµ РїСЂРё
-											РїРѕР»РЅРѕР№ РІС‹РіСЂСѓР·РєРµ</li>
-										<li>РСЃРїСЂР°РІР»РµРЅС‹ РѕС€РёР±РєРё СЃ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏРјРё</li>
-										<li>РР·РјРµРЅРµРЅР° РЅР°СЃС‚СЂРѕР№РєР° РѕС‡РёСЃС‚РєРё РєСЌС€Р° РЅР° СѓРґР°Р»РµРЅРёСЏ С„Р°Р№Р»РѕРІ
-											РїРѕСЃР»Рµ Р·Р°РіСЂСѓР·РєРё</li>
-										<li>Р”РѕР±Р°РІР»РµРЅС‹ РѕС‚РґРµР»СЊРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё РїРѕ СЃС‚Р°С‚СѓСЃСѓ С‚РѕРІР°СЂР°</li>
-										<li>РЈРґР°Р»РµРЅС‹ РЅРµРєРѕС‚РѕСЂС‹Рµ РЅРµРЅСѓР¶РЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</li>
-										<li>РЈР±СЂР°РЅС‹ СЃРєР»Р°РґС‹</li>
-										<li>Р”РѕР±Р°РІР»РµРЅР° РєРЅРѕРїРєР° СѓРґР°Р»РµРЅРёСЏ РЅРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РµРґРёРЅРёС†
-											РёР·РјРµСЂРµРЅРёР№</li>
-										<li>РЈРґР°Р»РµРЅР° РЅР°СЃС‚СЂРѕР№РєР° "Р’С‹РіСЂСѓР¶Р°С‚СЊ РїРѕРєСѓРїР°С‚РµР»СЏ" - РµСЃР»Рё РЅРµ
-											РІС‹РіСЂСѓР¶Р°С‚СЊ С‚Рѕ Р±СѓРґРµС‚ РѕС€РёР±РєР° РІ РЈРЎ</li>
-										<li>Р’РєР»СЋС‡РµРЅР° РїСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РїРѕРґРґРµСЂР¶РєРё PHP РєР»Р°СЃСЃР°
-											ZipArchive, РµСЃР»Рё РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ, С‚РѕРіРґР° РЅР°СЃС‚СЂРѕР№РєР°
-											"Р’С‹РіСЂСѓР¶Р°С‚СЊ РІ ZIP" РЅРµ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ Рё РґР»СЏ РЈРЎ СЃРѕРѕР±С‰Р°РµС‚СЃСЏ zip=no</li>
-										<li>РСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° РїСЂРё РІРєР»СЋС‡РµРЅРёРё Рё РѕС‚РєР»СЋС‡РµРЅРёСЏ РјРѕРґСѓР»СЏ</li>
-										<li>РџРѕРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° РїСЂРё РІС‹РїРѕР»РЅРµРЅРёРё СЂСѓС‡РЅРѕР№ РіРµРЅРµСЂР°С†РёРёРё
-											SEO (РЅРµ РїСЂРѕРІРµСЂСЏР»РѕСЃСЊ)</li>
-										<li>Р”РѕР±Р°РІР»РµРЅРѕ РѕС‚РєР»СЋС‡РµРЅРёРµ РіРµРЅРµСЂР°С†РёРё SEO РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё Рё
-											РѕР±РЅРѕРІР»РµРЅРёРё С‚РѕРІР°СЂРѕРІ, РєР°С‚РµРіРѕСЂРёР№ Рё РїСЂРѕРёР·РІРѕРґРёС‚РµР»РµР№.</li>
-										<li>Р’РєР»СЋС‡РµРЅР° РѕРїС†РёСЏ РІ РєРѕС‚РѕСЂРѕР№ РјРѕР¶РЅРѕ РїРµСЂРµС‡РёСЃР»РёС‚СЊ РЅР°Р·РІР°РЅРёСЏ
-											РѕРїС†РёР№, РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ РёРіРЅРѕСЂРёСЂРѕРІР°РЅС‹</li>
-										<li>Р”РѕР±Р°РІР»РµРЅР° РЅР°СЃС‚СЂРѕР№РєР° РІС‹С‡РёСЃР»РµРЅРёСЏ Р±Р°Р·РѕРІРѕР№ С†РµРЅС‹ РєР°Рє
-											РјРёРЅРёРјР°Р»СЊРЅР°СЏ С†РµРЅР° РѕРїС†РёРё (РџРћРљРђ Р•Р©Р• РќР• Р”РћР”Р•Р›РђРќРћ)</li>
-										<li>Р’РєР»СЋС‡РµРЅР° РїРѕРґРґРµСЂР¶РєР° CommerceML РІРµСЂСЃРёР№ 2.03 Рё 2.04</li>
-										<li>Р’РєР»СЋС‡РµРЅРѕ СѓРґР°Р»РµРЅРёРµ Р°СЂС…РёРІР° РІ РєСЌС€Рµ</li>
-										<li>РћС‚РєР»СЋС‡РµРЅРёРµ РїСѓСЃС‚С‹С… РєР°С‚РµРіРѕСЂРёР№ РїРѕСЃР»Рµ Р·Р°РіСЂСѓР·РєРё РєР°С‚Р°Р»РѕРіР°</li>
-										<li>Р’РєР»СЋС‡РµРЅРёРµ РЅРµ РїСѓСЃС‚С‹С… РєР°С‚РµРіРѕСЂРёР№ РїРѕСЃР»Рµ Р·Р°РіСЂСѓР·РєРё РєР°С‚Р°Р»РѕРіР°</li>
-										<li>РСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° РёРЅРѕРіРґР° РІС‹Р»Р°Р·РёС‚ РїСЂРё РїСЂРѕРІРµСЂРєРµ XML
-											С„Р°Р№Р»Р° РїСЂРё СЂР°СЃРїР°РєРѕРІРєРµ Р°СЂС…РёРІР°</li>
-										<li>Р”РѕР±Р°РІР»РµРЅРѕ РѕС‚РєР»СЋС‡РµРЅРёРµ С‚РѕРІР°СЂРѕРІ Рё РєР°С‚РµРіРѕСЂРёР№ РїРѕ
-											РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё РїСЂРё РїРѕР»РЅРѕР№ Р·Р°РіСЂСѓР·РєРµ</li>
-										<li>Р”РѕР±Р°РІР»РµРЅРѕ РѕС‚РєР»СЋС‡РµРЅРёРµ С‚РѕРІР°СЂРѕРІ РїСЂРё РЅР°Р»РёС‡РёРё С‚РµРіР° РЎС‚Р°С‚СѓСЃ
-											СЃРѕ Р·РЅР°С‡РµРЅРёРµРј РЈРґР°Р»РµРЅ</li>
+										<li>Удалены водяные знаки</li>
+										<li>Включена удаление категорий которых нет в файле при
+											полной выгрузке</li>
+										<li>Исправлены ошибки с производителями</li>
+										<li>Изменена настройка очистки кэша на удаления файлов
+											после загрузки</li>
+										<li>Добавлены отдельные настройки по статусу товара</li>
+										<li>Удалены некоторые ненужные настройки</li>
+										<li>Убраны склады</li>
+										<li>Добавлена кнопка удаления не используемых единиц
+											измерений</li>
+										<li>Удалена настройка "Выгружать покупателя" - если не
+											выгружать то будет ошибка в УС</li>
+										<li>Включена проверка наличия поддержки PHP класса
+											ZipArchive, если не поддерживается, тогда настройка
+											"Выгружать в ZIP" не отображается и для УС сообщается zip=no</li>
+										<li>Исправлена ошибка при включении и отключения модуля</li>
+										<li>Поправлена ошибка при выполнении ручной генерациии
+											SEO (не проверялось)</li>
+										<li>Добавлено отключение генерации SEO при добавлении и
+											обновлении товаров, категорий и производителей.</li>
+										<li>Включена опция в которой можно перечислить названия
+											опций, которые будут игнорированы</li>
+										<li>Добавлена настройка вычисления базовой цены как
+											минимальная цена опции (ПОКА ЕЩЕ НЕ ДОДЕЛАНО)</li>
+										<li>Включена поддержка CommerceML версий 2.03 и 2.04</li>
+										<li>Включено удаление архива в кэше</li>
+										<li>Отключение пустых категорий после загрузки каталога</li>
+										<li>Включение не пустых категорий после загрузки каталога</li>
+										<li>Исправлена ошибка иногда вылазит при проверке XML
+											файла при распаковке архива</li>
+										<li>Добавлено отключение товаров и категорий по
+											отдельности при полной загрузке</li>
+										<li>Добавлено отключение товаров при наличии тега Статус
+											со значением Удален</li>
 									</ul>
 								</div>
-								<legend>1.6.4.4b36 РѕС‚ 07.08.2018</legend>
+								<legend>1.6.4.4b36 от 07.08.2018</legend>
 								<div class="form-group">
 									<ul>
-										<li>Р’ РїСЂРѕС†РµСЃСЃРµ РґРѕСЂР°Р±РѕС‚РєР° РµСЃР»Рё РєРѕРЅС‚СЂР°РіРµРЅС‚ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ
-											РєР°Рє РћСЂРіСЂР°РЅРёР·Р°С†РёСЏ Рё РІ 1РЎ РѕРЅ РїРµСЂРµРёРјРµРЅРѕРІР°РЅ...</li>
+										<li>В процессе доработка если контрагент зарегистрирован
+											как Оргранизация и в 1С он переименован...</li>
 									</ul>
 								</div>
-								<legend>1.6.4.4b37 РѕС‚ 08.08.2018</legend>
+								<legend>1.6.4.4b37 от 08.08.2018</legend>
 								<div class="form-group">
 									<ul>
-										<li>РџРѕРґРїСЂР°РІР»РµРЅР° РѕРїС†РёСЏ "РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕРІР°СЂ СЃ РЅСѓР»РµРІС‹Рј
-											РѕСЃС‚Р°С‚РєРѕРј"</li>
+										<li>Подправлена опция "Не показывать товар с нулевым
+											остатком"</li>
 									</ul>
 								</div>
 							</fieldset>
@@ -1362,681 +1359,852 @@
 </div>
 <!-- content -->
 
-<script type="text/javascript"><!--
+<script type="text/javascript">
+<!--
+	$('#exchange1c-button-upload')
+			.on(
+					'click',
+					function() {
+						$('#form-upload').remove();
 
-$('#exchange1c-button-upload').on('click', function() {
-	$('#form-upload').remove();
+						$('body')
+								.prepend(
+										'<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" value="" /></form>');
 
-	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" value="" /></form>');
+						$('#form-upload input[name=\'file\']').trigger('click');
 
-	$('#form-upload input[name=\'file\']').trigger('click');
+						if (typeof timer != 'undefined') {
+							clearInterval(timer);
+						}
 
-	if (typeof timer != 'undefined') {
-	clearInterval(timer);
-	}
+						timer = setInterval(
+								function() {
+									if ($('#form-upload input[name=\'file\']')
+											.val() != '') {
+										clearInterval(timer);
 
-	timer = setInterval(function() {
-		if ($('#form-upload input[name=\'file\']').val() != '') {
-			clearInterval(timer);
+										$
+												.ajax({
+													url : 'index.php?route=extension/module/exchange1c/manualImport&user_user_token=<?php echo $user_user_token; ?>',
+													type : 'post',
+													dataType : 'json',
+													data : new FormData(
+															$('#form-upload')[0]),
+													cache : false,
+													contentType : false,
+													processData : false,
+													beforeSend : function() {
+														$(
+																'#exchange1c-button-upload i')
+																.replaceWith(
+																		'<i class="fa fa-circle-o-notch fa-spin"></i>');
+														$(
+																'#exchange1c-button-upload')
+																.prop(
+																		'disabled',
+																		true);
+													},
+													complete : function() {
+														$(
+																'#exchange1c-button-upload i')
+																.replaceWith(
+																		'<i class="fa fa-upload"></i>');
+														$(
+																'#exchange1c-button-upload')
+																.prop(
+																		'disabled',
+																		false);
+													},
+													success : function(json) {
+														if (json['error']) {
+															alert(json['error']);
+														}
 
-			$.ajax({
-				url: 'index.php?route=extension/module/exchange1c/manualImport&token=<?php echo $token; ?>',
-				type: 'post',
-				dataType: 'json',
-				data: new FormData($('#form-upload')[0]),
-				cache: false,
-				contentType: false,
-				processData: false,
-				beforeSend: function() {
-					$('#exchange1c-button-upload i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-					$('#exchange1c-button-upload').prop('disabled', true);
-				},
-				complete: function() {
-					$('#exchange1c-button-upload i').replaceWith('<i class="fa fa-upload"></i>');
-					$('#exchange1c-button-upload').prop('disabled', false);
-				},
-				success: function(json) {
-					if (json['error']) {
-						alert(json['error']);
-					}
+														if (json['success']) {
+															alert(json['success']);
+														}
+													},
+													error : function(xhr,
+															ajaxOptions,
+															thrownError) {
+														alert(thrownError
+																+ "\r\n"
+																+ xhr.statusText
+																+ "\r\n"
+																+ xhr.responseText);
+													}
+												});
+									}
+								}, 500);
+					});
 
-					if (json['success']) {
-						alert(json['success']);
-					}
-				},
-				error: function(xhr, ajaxOptions, thrownError) {
-					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-				}
-			});
+	$('#exchange1c-button-cleaning_db')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualCleaning&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-cleaning_links')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualCleaningLinks&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-cleaning_old_images')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualCleaningOldImages&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-cleaning_cache')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualCleaningCache&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-generate_seo')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualGenerateSeo&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-remove_doubles_links')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualRemoveDoublesLinks&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-delete_import_data')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualDeleteImportData&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-delete_double_url_alias')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualDeleteDoubleUrlAlias&user_user_token=<?php echo $user_user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-remove_unised_manufacturers')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualRemoveUnisedManufacturers&user_user_token=<?php echo $user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	$('#exchange1c-button-remove_unised_units')
+			.on(
+					'click',
+					function() {
+						$('#form-clean').remove();
+						if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+							$
+									.ajax({
+										url : 'index.php?route=extension/module/exchange1c/manualRemoveUnisedUnits&user_token=<?php echo $user_token; ?>',
+										type : 'post',
+										dataType : 'json',
+										data : new FormData($('#form-clean')[0]),
+										cache : false,
+										contentType : false,
+										processData : false,
+										beforeSend : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-circle-o-notch fa-spin"></i>');
+											$('#button-clean').prop('disabled',
+													true);
+										},
+										complete : function() {
+											$('#button-clean i')
+													.replaceWith(
+															'<i class="fa fa-trash-o"></i>');
+											$('#button-clean').prop('disabled',
+													false);
+										},
+										success : function(json) {
+											if (json['error']) {
+												alert(json['error']);
+											}
+
+											if (json['success']) {
+												alert(json['success']);
+											}
+										},
+										error : function(xhr, ajaxOptions,
+												thrownError) {
+											alert(thrownError + "\r\n"
+													+ xhr.statusText + "\r\n"
+													+ xhr.responseText);
+										}
+									});
+						}
+					});
+
+	function update(ver) {
+		if (confirm('<?php echo $lang['text_confirm'] ?>')) {
+			$
+					.ajax({
+						url : 'index.php?route=extension/module/exchange1c/manualUpdate&version='
+								+ ver + '&user_token=<?php echo $user_token; ?>',
+						type : 'post',
+						dataType : 'json',
+						data : new FormData($('#form-exchange1c')[0]),
+						cache : false,
+						contentType : false,
+						processData : false,
+						success : function(json) {
+							if (json['error']) {
+								alert(json['error']);
+							}
+
+							if (json['success']) {
+								alert(json['success']);
+							}
+						},
+						error : function(xhr, ajaxOptions, thrownError) {
+							alert(thrownError + "\r\n" + xhr.statusText
+									+ "\r\n" + xhr.responseText);
+						}
+					});
 		}
-	}, 500);
-});
-
-
-$('#exchange1c-button-cleaning_db').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualCleaning&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
 	}
-});
 
-
-$('#exchange1c-button-cleaning_links').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualCleaningLinks&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-
-$('#exchange1c-button-cleaning_old_images').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualCleaningOldImages&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-
-$('#exchange1c-button-cleaning_cache').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualCleaningCache&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-
-$('#exchange1c-button-generate_seo').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualGenerateSeo&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-
-$('#exchange1c-button-remove_doubles_links').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualRemoveDoublesLinks&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-
-$('#exchange1c-button-delete_import_data').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualDeleteImportData&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-$('#exchange1c-button-delete_double_url_alias').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualDeleteDoubleUrlAlias&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-$('#exchange1c-button-remove_unised_manufacturers').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualRemoveUnisedManufacturers&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-$('#exchange1c-button-remove_unised_units').on('click', function() {
-	$('#form-clean').remove();
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualRemoveUnisedUnits&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-clean')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-				$('#button-clean').prop('disabled', true);
-			},
-			complete: function() {
-				$('#button-clean i').replaceWith('<i class="fa fa-trash-o"></i>');
-				$('#button-clean').prop('disabled', false);
-			},
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-
-function update(ver) {
-	if (confirm('<?php echo $lang['text_confirm'] ?>')) {
-		$.ajax({
-			url: 'index.php?route=extension/module/exchange1c/manualUpdate&version=' + ver + '&token=<?php echo $token; ?>',
-			type: 'post',
-			dataType: 'json',
-			data: new FormData($('#form-exchange1c')[0]),
-			cache: false,
-			contentType: false,
-			processData: false,
-			success: function(json) {
-				if (json['error']) {
-					alert(json['error']);
-				}
-
-				if (json['success']) {
-					alert(json['success']);
-				}
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-}
-
-
-var price_row = <?php echo $price_row; ?>;
-function addConfigPriceType() {
-	html = '<tr id="exchange1c_price_type_row' + price_row + '">';
-	html += '<td class="text-left"><input class="form-control" type="text" name="exchange1c_price_type[' + price_row + '][keyword]" value="" /></td>';
-	html += '<td class="text-left"><input class="form-control" type="text" name="exchange1c_price_type[' + price_row + '][id_cml]" value="" /></td>';
-	html += '<td class="text-left"><select class="form-control" name="exchange1c_price_type[' + price_row + '][customer_group_id]">';
-	<?php foreach ($customer_groups as $customer_group) { ?>
-	html += '<option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>';
-	<?php } ?>
-	html += '</select></td>';
-	html += '<td class="text-left"><select class="form-control" name="exchange1c_price_type[<?php echo $price_row; ?>][table_price]">';
-	<?php foreach ($table_prices as $table_price) { ?>
+	var price_row = <?php echo $price_row; ?>;
+	function addConfigPriceType() {
+		html = '<tr id="exchange1c_price_type_row' + price_row + '">';
+		html += '<td class="text-left"><input class="form-control" type="text" name="exchange1c_price_type[' + price_row + '][keyword]" value="" /></td>';
+		html += '<td class="text-left"><input class="form-control" type="text" name="exchange1c_price_type[' + price_row + '][id_cml]" value="" /></td>';
+		html += '<td class="text-left"><select class="form-control" name="exchange1c_price_type[' + price_row + '][customer_group_id]">';
+		<?php foreach ($customer_groups as $customer_group) { ?>
+		html += '<option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>';
+		<?php } ?>
+		html += '</select></td>';
+		html += '<td class="text-left"><select class="form-control" name="exchange1c_price_type[<?php echo $price_row; ?>][table_price]">';
+		<?php foreach ($table_prices as $table_price) { ?>
 		<?php $selected = '' ?>
 		<?php if (count($exchange1c_price_type)) { ?>
 		<?php if ($table_price['name'] == $obj['table_price']) { ?>
 		<?php $selected = ' selected="selected"' ?>
 		<?php } ?>
 		<?php } ?>
-	html += '<option value="<?php echo $table_price['name']; ?>"<?php echo $selected; ?>><?php echo $table_price['desc']; ?></option>';
-	<?php } ?>
-	html += '</td>';
-	html += '<td class="text-center"><input class="form-control" type="text" name="exchange1c_price_type[' + price_row + '][quantity]" value="1" size="2" /></td>';
-	html += '<td class="text-center"><input class="form-control" type="text" name="exchange1c_price_type[' + price_row + '][priority]" value="<?php echo $price_row+1; ?>" size="2" /></td>';
-	html += '<td class="text-center"><button type="button" data-toggle="tooltip" title="<?php echo $lang['button_remove']; ?>" class="btn btn-danger" onclick="confirm(\'<?php echo $lang['text_confirm']; ?>\') ? $(\'#exchange1c_price_type_row' + price_row + '\').remove() : false;"><i class="fa fa-minus-circle"></i></button></td>';
-	html += '</tr>';
+		html += '<option value="<?php echo $table_price['name']; ?>"<?php echo $selected; ?>><?php echo $table_price['desc']; ?></option>';
+		<?php } ?>
+		html += '</td>';
+		html += '<td class="text-center"><input class="form-control" type="text" name="exchange1c_price_type[' + price_row + '][quantity]" value="1" size="2" /></td>';
+		html += '<td class="text-center"><input class="form-control" type="text" name="exchange1c_price_type['
+				+ price_row
+				+ '][priority]" value="<?php echo $price_row+1; ?>" size="2" /></td>';
+		html += '<td class="text-center"><button type="button" data-toggle="tooltip" title="<?php echo $lang['button_remove']; ?>" class="btn btn-danger" onclick="confirm(\'<?php echo $lang['text_confirm']; ?>\') ? $(\'#exchange1c_price_type_row'
+				+ price_row
+				+ '\').remove() : false;"><i class="fa fa-minus-circle"></i></button></td>';
+		html += '</tr>';
 
-	$('#exchange1c_price_type_id tbody').append(html);
-	price_row++;
-	$('select#customer_group').change();
-}
-
-
-var currency_row = <?php echo $currency_row; ?>;
-function addConfigCurrency() {
-	html = '<tr id="exchange1c_price_type_row' + currency_row + '">';
-	html += '<td class="text-left"><input class="form-control" type="text" name="exchange1c_currency[' + currency_row + '][name]" value="" /></td>';
-	html += '<td class="text-left"><select class="form-control" id="customer_group" name="exchange1c_currency[' + currency_row + '][currency_id]">';
-	<?php foreach ($currencies as $currency) { ?>
-	html += '<option value="<?php echo $currency['currency_id']; ?>"><?php echo $currency['title']; ?></option>';
-	<?php } ?>
-	html += '</select></td>';
-	html += '<td class="text-center"><button type="button" data-toggle="tooltip" title="<?php echo $lang['button_remove']; ?>" class="btn btn-danger" onclick="confirm(\'<?php echo $lang['text_confirm']; ?>\') ? $(\'#exchange1c_currency_row' + currency_row + '\').remove() : false;"><i class="fa fa-minus-circle"></i></button></td>';
-	html += '</tr>';
-
-	$('#exchange1c_currency tbody').append(html);
-	currency_row++;
-}
-
-
-var order_delivery_row = <?php echo $order_delivery_row ?>;
-function addOrderDelivery() {
-	html = '<tr id="exchange1c_order_delivery_row' + order_import_row + '">';
-	html += '<td class="text-left"><select class="form-control" name="exchange1c_order_delivery[' + order_delivery_row + '][delivery_id]">';
-<?php foreach ($order_types_of_delivery as $delivery_id => $name) { ?>
-	html += '<option value="<?php echo $delivery_id ?>"><?php echo $name ?></option>';
-<?php } ?>
-	html += '<td class="text-left">';
-	html += '<div><input class="form-control" type="text" name="exchange1c_order_delivery[' + order_delivery_row + '][delivery_service_name]" /></div>';
-	html += '</td>';
-	html += '<td class="text-center"><button type="button" data-toggle="tooltip" title="<?php echo $lang['button_remove']; ?>" class="btn btn-danger" onclick="confirm(\'<?php echo $lang['text_confirm']; ?>\') ? $(\'#exchange1c_order_delivery_row' + order_delivery_row + '\').remove() : false; order_delivery_row--;"><i class="fa fa-minus-circle"></i></button></td>';
-	html += '</tr>';
-
-	$('#orders_delivery tbody').append(html);
-	order_delivery_row++;
-}
-
-
-function image_upload(field, thumb) {
-	$('#dialog').remove();
-
-	$('#content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=common/filemanager&token=<?php echo $token; ?>&field=' + encodeURIComponent(field) + '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
-
-	$('#dialog').dialog({
-		title: '<?php echo $lang['text_image_manager']; ?>',
-		close: function (event, ui) {
-			if ($('#' + field).attr('value')) {
-				$.ajax({
-					url: 'index.php?route=common/filemanager/image&token=<?php echo $token; ?>&image=' + encodeURIComponent($('#' + field).val()),
-					dataType: 'text',
-					success: function(data) {
-						$('#' + thumb).replaceWith('<img src="' + data + '" alt="" id="' + thumb + '" />');
-					}
-				});
-			}
-		},
-		bgiframe: false,
-		width: 800,
-		height: 400,
-		resizable: false,
-		modal: false
-	});
-};
-
-
-function checkOptionSynchronize_by_code() {
-
-	var val = $('input[name="exchange1c_synchronize_by_code"]:checked').val();
-	if (val == 1) {
-		$('select[name="exchange1c_synchronize_new_product_by"]').attr('disabled', 'disabled');
-	} else {
-		$('select[name="exchange1c_synchronize_new_product_by"]').attr('disabled', null);
+		$('#exchange1c_price_type_id tbody').append(html);
+		price_row++;
+		$('select#customer_group').change();
 	}
 
-} // checkOptionSynchronize_by_code()
+	var currency_row = <?php echo $currency_row; ?>;
+	function addConfigCurrency() {
+		html = '<tr id="exchange1c_price_type_row' + currency_row + '">';
+		html += '<td class="text-left"><input class="form-control" type="text" name="exchange1c_currency[' + currency_row + '][name]" value="" /></td>';
+		html += '<td class="text-left"><select class="form-control" id="customer_group" name="exchange1c_currency[' + currency_row + '][currency_id]">';
+		<?php foreach ($currencies as $currency) { ?>
+		html += '<option value="<?php echo $currency['currency_id']; ?>"><?php echo $currency['title']; ?></option>';
+		<?php } ?>
+		html += '</select></td>';
+		html += '<td class="text-center"><button type="button" data-toggle="tooltip" title="<?php echo $lang['button_remove']; ?>" class="btn btn-danger" onclick="confirm(\'<?php echo $lang['text_confirm']; ?>\') ? $(\'#exchange1c_currency_row'
+				+ currency_row
+				+ '\').remove() : false;"><i class="fa fa-minus-circle"></i></button></td>';
+		html += '</tr>';
 
-
-function checkOptionImport_product_name() {
-	var val = $('select[name="exchange1c_import_product_name"]').val();
-	if (val == "manually") {
-		$('div#import_product_name_field_select').slideDown;
-	} else {
-		$('div#import_product_name_field').slideUp();
+		$('#exchange1c_currency tbody').append(html);
+		currency_row++;
 	}
 
-} // checkOptionImport_product_name()
+	var order_delivery_row = <?php echo $order_delivery_row ?>;
+	function addOrderDelivery() {
+		html = '<tr id="exchange1c_order_delivery_row' + order_import_row + '">';
+		html += '<td class="text-left"><select class="form-control" name="exchange1c_order_delivery[' + order_delivery_row + '][delivery_id]">';
+		<?php foreach ($order_types_of_delivery as $delivery_id => $name) { ?>
+		html += '<option value="<?php echo $delivery_id ?>"><?php echo $name ?></option>';
+		<?php } ?>
+		html += '<td class="text-left">';
+		html += '<div><input class="form-control" type="text" name="exchange1c_order_delivery[' + order_delivery_row + '][delivery_service_name]" /></div>';
+		html += '</td>';
+		html += '<td class="text-center"><button type="button" data-toggle="tooltip" title="<?php echo $lang['button_remove']; ?>" class="btn btn-danger" onclick="confirm(\'<?php echo $lang['text_confirm']; ?>\') ? $(\'#exchange1c_order_delivery_row'
+				+ order_delivery_row
+				+ '\').remove() : false; order_delivery_row--;"><i class="fa fa-minus-circle"></i></button></td>';
+		html += '</tr>';
 
-
-$('input[name="exchange1c_synchronize_by_code"]').change(function(){
-	checkOptionSynchronize_by_code();
-})
-
-
-$('select[name="exchange1c_import_product_name"]').change(function(){
-	checkOptionImport_product_name();
-});
-
-// РЎС‚Р°С‚СѓСЃ РјРѕРґСѓР»СЏ
-$('input[name="exchange1c_module_status"]').change(function(){
-	checkStatus(this.value);
-})
-
-function checkStatus(status) {
-	if (status != 1) {
-		$('#danger').slideDown();
-		$('#auth').slideUp();
-		$('#security').slideUp();
-	} else {
-		$('#danger').slideUp();
-		$('#auth').slideDown();
-		$('#security').slideDown();
+		$('#orders_delivery tbody').append(html);
+		order_delivery_row++;
 	}
-}
 
-// Р’С‹РІРѕРґ СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РёР·РјРµРЅРµРЅРёРё С„РѕСЂРјС‹
-$('input').change(function() {
-	$('#modification').slideDown();
-	modificationForm(this);
-})
-$('select').change(function() {
-	$('#modification').slideDown();
-	modificationForm(this);
-})
-$('checkbox').change(function() {
-	$('#modification').slideDown();
-	modificationForm(this);
-})
+	function image_upload(field, thumb) {
+		$('#dialog').remove();
 
-function productImportMode(value) {
-	// Р РµР¶РёРј РѕР±РјРµРЅР° С‚РѕРІР°СЂР°РјРё
-	if (value == 'all') {
-		$('#product_sync').slideDown();
-		$('#product_status').slideDown();
-		$('#product_field_update').slideDown();
-		$('#product_new_status_disable').slideDown();
-	} else if (value == 'only_new') {
-		$('#product_sync').slideDown();
-		$('#product_status').slideDown();
-		$('#product_field_update').slideDown();
-		$('#product_new_status_disable').slideDown();
-	} else if (value == 'only_update') {
-		$('#product_sync').slideDown();
-		$('#product_status').slideDown();
-		$('#product_field_update').slideDown();
-		$('#product_new_status_disable').slideUp();
-	} else if (value == 'not_change') {
-		$('#product_sync').slideUp();
-		$('#product_status').slideUp();
-		$('#product_field_update').slideUp();
-		$('#product_new_status_disable').slideUp();
-	}
-}
+		$('#content')
+				.prepend(
+						'<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=common/filemanager&user_token=<?php echo $user_token; ?>&field='
+								+ encodeURIComponent(field)
+								+ '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
 
-function productNameManually(value) {
-	// РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР° РёР· РїРѕР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РІСЂСѓС‡РЅСѓСЋ
-	if (value == 'manually') {
-		$('#product_name_field').slideDown();
-	} else {
-		$('#product_name_field').slideUp();
-	}
-}
+		$('#dialog')
+				.dialog(
+						{
+							title : '<?php echo $lang['text_image_manager']; ?>',
+							close : function(event, ui) {
+								if ($('#' + field).attr('value')) {
+									$
+											.ajax({
+												url : 'index.php?route=common/filemanager/image&user_token=<?php echo $user_token; ?>&image='
+														+ encodeURIComponent($(
+																'#' + field)
+																.val()),
+												dataType : 'text',
+												success : function(data) {
+													$('#' + thumb)
+															.replaceWith(
+																	'<img src="' + data + '" alt="" id="' + thumb + '" />');
+												}
+											});
+								}
+							},
+							bgiframe : false,
+							width : 800,
+							height : 400,
+							resizable : false,
+							modal : false
+						});
+	};
 
-function logMode(value) {
-	// РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє Р¶СѓСЂРЅР°Р»Р°
-	if (value != '0') {
-		$('#log-enable').slideDown();
-	} else {
-		$('#log-enable').slideUp();
-	}
-}
+	function checkOptionSynchronize_by_code() {
 
-function groupName($object) {
-	if ($object.val() == "brackets") {
-		$('#attribute_group_name').slideUp();
-	} else {
-		$('#attribute_group_name').slideDown();
-	}
-}
-
-
-function modificationForm($object) {
-
-	if ($object) {
-		if ($object.name == 'exchange1c_product_import_mode') {
-			productImportMode($object.value);
-		} else if ($object.name == 'exchange1c_product_name') {
-			productNameManually($object.value);
-		} else if ($object.name == 'exchange1c_log_level') {
-			logMode($object.value);
-		} else if ($object.name == 'exchange1c_attribute_group_name_mode') {
-			//groupName($('select[name="exchange1c_groupname_in_brackets_attribute"]'));
+		var val = $('input[name="exchange1c_synchronize_by_code"]:checked')
+				.val();
+		if (val == 1) {
+			$('select[name="exchange1c_synchronize_new_product_by"]').attr(
+					'disabled', 'disabled');
+		} else {
+			$('select[name="exchange1c_synchronize_new_product_by"]').attr(
+					'disabled', null);
 		}
-	} else {
-		productImportMode($('select[name="exchange1c_product_import_mode"]').val());
-		productNameManually($('select[name="exchange1c_product_name"]').val());
-		logMode($('select[name="exchange1c_log_level"]').val());
-		//groupName($('select[name="exchange1c_groupname_in_brackets_attribute"]'))
+
+	} // checkOptionSynchronize_by_code()
+
+	function checkOptionImport_product_name() {
+		var val = $('select[name="exchange1c_import_product_name"]').val();
+		if (val == "manually") {
+			$('div#import_product_name_field_select').slideDown;
+		} else {
+			$('div#import_product_name_field').slideUp();
+		}
+
+	} // checkOptionImport_product_name()
+
+	$('input[name="exchange1c_synchronize_by_code"]').change(function() {
+		checkOptionSynchronize_by_code();
+	})
+
+	$('select[name="exchange1c_import_product_name"]').change(function() {
+		checkOptionImport_product_name();
+	});
+
+	// Статус модуля
+	$('input[name="exchange1c_module_status"]').change(function() {
+		checkStatus(this.value);
+	})
+
+	function checkStatus(status) {
+		if (status != 1) {
+			$('#danger').slideDown();
+			$('#auth').slideUp();
+			$('#security').slideUp();
+		} else {
+			$('#danger').slideUp();
+			$('#auth').slideDown();
+			$('#security').slideDown();
+		}
+	}
+
+	// Вывод уведомления об изменении формы
+	$('input').change(function() {
+		$('#modification').slideDown();
+		modificationForm(this);
+	})
+	$('select').change(function() {
+		$('#modification').slideDown();
+		modificationForm(this);
+	})
+	$('checkbox').change(function() {
+		$('#modification').slideDown();
+		modificationForm(this);
+	})
+
+	function productImportMode(value) {
+		// Режим обмена товарами
+		if (value == 'all') {
+			$('#product_sync').slideDown();
+			$('#product_status').slideDown();
+			$('#product_field_update').slideDown();
+			$('#product_new_status_disable').slideDown();
+		} else if (value == 'only_new') {
+			$('#product_sync').slideDown();
+			$('#product_status').slideDown();
+			$('#product_field_update').slideDown();
+			$('#product_new_status_disable').slideDown();
+		} else if (value == 'only_update') {
+			$('#product_sync').slideDown();
+			$('#product_status').slideDown();
+			$('#product_field_update').slideDown();
+			$('#product_new_status_disable').slideUp();
+		} else if (value == 'not_change') {
+			$('#product_sync').slideUp();
+			$('#product_status').slideUp();
+			$('#product_field_update').slideUp();
+			$('#product_new_status_disable').slideUp();
+		}
+	}
+
+	function productNameManually(value) {
+		// Название товара из поля указанного вручную
+		if (value == 'manually') {
+			$('#product_name_field').slideDown();
+		} else {
+			$('#product_name_field').slideUp();
+		}
+	}
+
+	function logMode(value) {
+		// Отображение настроек журнала
+		if (value != '0') {
+			$('#log-enable').slideDown();
+		} else {
+			$('#log-enable').slideUp();
+		}
+	}
+
+	function groupName($object) {
+		if ($object.val() == "brackets") {
+			$('#attribute_group_name').slideUp();
+		} else {
+			$('#attribute_group_name').slideDown();
+		}
+	}
+
+	function modificationForm($object) {
+
+		if ($object) {
+			if ($object.name == 'exchange1c_product_import_mode') {
+				productImportMode($object.value);
+			} else if ($object.name == 'exchange1c_product_name') {
+				productNameManually($object.value);
+			} else if ($object.name == 'exchange1c_log_level') {
+				logMode($object.value);
+			} else if ($object.name == 'exchange1c_attribute_group_name_mode') {
+				//groupName($('select[name="exchange1c_groupname_in_brackets_attribute"]'));
+			}
+		} else {
+			productImportMode($('select[name="exchange1c_product_import_mode"]')
+					.val());
+			productNameManually($('select[name="exchange1c_product_name"]')
+					.val());
+			logMode($('select[name="exchange1c_log_level"]').val());
+			//groupName($('select[name="exchange1c_groupname_in_brackets_attribute"]'))
+
+		}
 
 	}
 
-}
+	$(document).ready(function() {
 
-$(document).ready(function() {
+		checkStatus($('input[name="exchange1c_module_status"]:checked').val());
+		modificationForm();
+		checkOptionSynchronize_by_code();
+		checkOptionImport_product_name();
 
-	checkStatus($('input[name="exchange1c_module_status"]:checked').val());
-	modificationForm();
-	checkOptionSynchronize_by_code();
-	checkOptionImport_product_name();
-
-});
-
-//--></script>
+	});
+//-->
+</script>
 
 
 {{ footer }}
