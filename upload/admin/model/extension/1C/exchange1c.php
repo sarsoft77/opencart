@@ -6626,7 +6626,7 @@ class ModelExtension1CExchange1c extends Model {
 
             $this->load->model('customer/customer_group');
             $this->load->model('sale/order');
-            $this->load->model('catalog/unit');
+            //$this->load->model('catalog/unit');
 
             foreach ($orders_export as $order_id => $order_status_id) {
 

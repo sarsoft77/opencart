@@ -182,16 +182,17 @@ $registry->set('event', $event);
 // Front Controller
 $controller = new Router($registry);
 
-// Информация используется для поиска и отладки возможных ошибок в beta версиях
-//$sapi = php_sapi_name();
-//if ($sapi=='cli')
-//	$log->write('Запуск веб сервера из командной строки');
-//elseif (substr($sapi,0,3)=='cgi')
-//	$log->write('Запуск веб сервера в режиме CGI');
-//elseif (substr($sapi,0,6)=='apache')
-//	$log->write('Запуск веб сервера в режиме модуля Apache');
-//else
-//	$log->write('Запуск веб сервера в режиме модуля сервера '.$sapi);
+/* Информация используется для поиска и отладки возможных ошибок в beta версиях
+$sapi = php_sapi_name();
+if ($sapi=='cli')
+	$log->write('Запуск веб сервера из командной строки');
+elseif (substr($sapi,0,3)=='cgi')
+	$log->write('Запуск веб сервера в режиме CGI');
+elseif (substr($sapi,0,6)=='apache')
+	$log->write('Запуск веб сервера в режиме модуля Apache');
+else
+	$log->write('Запуск веб сервера в режиме модуля сервера '.$sapi);
+*/	
 
 // Router
 
@@ -199,19 +200,23 @@ if (isset($request->get['mode']) && $request->get['type'] == 'catalog') {
 
 	switch ($request->get['mode']) {
 		case 'checkauth':
-			$action = new Action('extension/module/exchange1c/modeCheckauth');
+		    // авторизация
+		    $action = new Action('extension/module/exchange1c/modeCheckauth');
 		break;
 
 		case 'init':
+		    // Инициализация
 			$action = new Action('extension/module/exchange1c/modeCatalogInit');
 		break;
 
 		case 'file':
-			$action = new Action('extension/module/exchange1c/modeFileCatalog');
+		    // Передача файла
+		    $action = new Action('extension/module/exchange1c/modeFileCatalog');
 		break;
 
 		case 'import':
-			$action = new Action('extension/module/exchange1c/modeImport');
+		    // Импорт файла сервером
+		    $action = new Action('extension/module/exchange1c/modeImport');
 		break;
 
 		default:
@@ -222,27 +227,33 @@ if (isset($request->get['mode']) && $request->get['type'] == 'catalog') {
 
 	switch ($request->get['mode']) {
 		case 'checkauth':
-			$action = new Action('extension/module/exchange1c/modeCheckauth');
+		    // Авторизация
+		    $action = new Action('extension/module/exchange1c/modeCheckauth');
 		break;
 
 		case 'init':
-			$action = new Action('extension/module/exchange1c/modeSaleInit');
+		    // Инициализация
+		    $action = new Action('extension/module/exchange1c/modeSaleInit');
 		break;
 
 		case 'query':
-			$action = new Action('extension/module/exchange1c/modeQueryOrders');
+		    // Получить данные
+		    $action = new Action('extension/module/exchange1c/modeQueryOrders');
 		break;
 
 		case 'file':
-			$action = new Action('extension/module/exchange1c/modeFileSale');
+		    // Передача файла
+		    $action = new Action('extension/module/exchange1c/modeFileSale');
 		break;
 
 		case 'import':
-			$action = new Action('extension/module/exchange1c/modeImport');
+		    // Импорт файла сервером
+		    $action = new Action('extension/module/exchange1c/modeImport');
 		break;
 
 		case 'info':
-			$action = new Action('extension/module/exchange1c/modeInfo');
+		    // Информация
+		    $action = new Action('extension/module/exchange1c/modeInfo');
 		break;
 
 		case 'success':
@@ -258,10 +269,12 @@ if (isset($request->get['mode']) && $request->get['type'] == 'catalog') {
 
 	switch ($request->get['mode']) {
 		case 'init':
+		    // Инициализация
 			$action = new Action('extension/module/exchange1c/modeInitGetCatalog');
 		break;
 
 		case 'query':
+		    // Получение данных
 			$action = new Action('extension/module/exchange1c/modeQueryGetCatalog');
 		break;
 
