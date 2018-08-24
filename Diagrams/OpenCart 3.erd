@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="OpenCart 3.erd" time="201808240953">
+	<entities>
+		<data-source id="mysql5-1656a803787-6efb8b6067d3fd9d">
+			<entity id="1" name="bim3_address" fq-name="bim3.bim3_address" order="0" x="2155" y="1251">
+				<path name="bim3"/>
+			</entity>
+			<entity id="2" name="bim3_api" fq-name="bim3.bim3_api" order="1" x="502" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="3" name="bim3_api_ip" fq-name="bim3.bim3_api_ip" order="2" x="1679" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="4" name="bim3_api_session" fq-name="bim3.bim3_api_session" order="3" x="817" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="5" name="bim3_attribute" fq-name="bim3.bim3_attribute" order="4" x="1926" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="6" name="bim3_attribute_description" fq-name="bim3.bim3_attribute_description" order="5" x="2155" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="7" name="bim3_attribute_group" fq-name="bim3.bim3_attribute_group" order="6" x="20" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="8" name="bim3_attribute_group_description" fq-name="bim3.bim3_attribute_group_description" order="7" x="2375" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="9" name="bim3_attribute_to_1c" fq-name="bim3.bim3_attribute_to_1c" order="8" x="2821" y="370">
+				<path name="bim3"/>
+			</entity>
+			<entity id="10" name="bim3_attribute_value" fq-name="bim3.bim3_attribute_value" order="9" x="3078" y="370">
+				<path name="bim3"/>
+			</entity>
+			<entity id="11" name="bim3_banner" fq-name="bim3.bim3_banner" order="10" x="2622" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="12" name="bim3_banner_image" fq-name="bim3.bim3_banner_image" order="11" x="1066" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="13" name="bim3_cart" fq-name="bim3.bim3_cart" order="12" x="253" y="1280">
+				<path name="bim3"/>
+			</entity>
+			<entity id="14" name="bim3_category" fq-name="bim3.bim3_category" order="13" x="502" y="1280">
+				<path name="bim3"/>
+			</entity>
+			<entity id="15" name="bim3_category_description" fq-name="bim3.bim3_category_description" order="14" x="1284" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="16" name="bim3_category_filter" fq-name="bim3.bim3_category_filter" order="15" x="253" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="17" name="bim3_category_path" fq-name="bim3.bim3_category_path" order="16" x="2821" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="18" name="bim3_category_to_1c" fq-name="bim3.bim3_category_to_1c" order="17" x="3078" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="19" name="bim3_category_to_layout" fq-name="bim3.bim3_category_to_layout" order="18" x="3412" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="20" name="bim3_category_to_store" fq-name="bim3.bim3_category_to_store" order="19" x="502" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="21" name="bim3_country" fq-name="bim3.bim3_country" order="20" x="1495" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="22" name="bim3_coupon" fq-name="bim3.bim3_coupon" order="21" x="3678" y="1232">
+				<path name="bim3"/>
+			</entity>
+			<entity id="23" name="bim3_coupon_category" fq-name="bim3.bim3_coupon_category" order="22" x="817" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="24" name="bim3_coupon_history" fq-name="bim3.bim3_coupon_history" order="23" x="1066" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="25" name="bim3_coupon_product" fq-name="bim3.bim3_coupon_product" order="24" x="3678" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="26" name="bim3_currency" fq-name="bim3.bim3_currency" order="25" x="817" y="1280">
+				<path name="bim3"/>
+			</entity>
+			<entity id="27" name="bim3_custom_field" fq-name="bim3.bim3_custom_field" order="26" x="1679" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="28" name="bim3_custom_field_customer_group" fq-name="bim3.bim3_custom_field_customer_group" order="27" x="3895" y="124">
+				<path name="bim3"/>
+			</entity>
+			<entity id="29" name="bim3_custom_field_description" fq-name="bim3.bim3_custom_field_description" order="28" x="20" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="30" name="bim3_custom_field_value" fq-name="bim3.bim3_custom_field_value" order="29" x="253" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="31" name="bim3_custom_field_value_description" fq-name="bim3.bim3_custom_field_value_description" order="30" x="3412" y="370">
+				<path name="bim3"/>
+			</entity>
+			<entity id="32" name="bim3_customer" fq-name="bim3.bim3_customer" order="31" x="1284" y="1916">
+				<path name="bim3"/>
+			</entity>
+			<entity id="33" name="bim3_customer_activity" fq-name="bim3.bim3_customer_activity" order="32" x="1284" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="34" name="bim3_customer_affiliate" fq-name="bim3.bim3_customer_affiliate" order="33" x="502" y="1973">
+				<path name="bim3"/>
+			</entity>
+			<entity id="35" name="bim3_customer_approval" fq-name="bim3.bim3_customer_approval" order="34" x="3678" y="370">
+				<path name="bim3"/>
+			</entity>
+			<entity id="36" name="bim3_customer_group" fq-name="bim3.bim3_customer_group" order="35" x="502" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="37" name="bim3_customer_group_description" fq-name="bim3.bim3_customer_group_description" order="36" x="3895" y="370">
+				<path name="bim3"/>
+			</entity>
+			<entity id="38" name="bim3_customer_history" fq-name="bim3.bim3_customer_history" order="37" x="20" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="39" name="bim3_customer_ip" fq-name="bim3.bim3_customer_ip" order="38" x="253" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="40" name="bim3_customer_login" fq-name="bim3.bim3_customer_login" order="39" x="1495" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="41" name="bim3_customer_online" fq-name="bim3.bim3_customer_online" order="40" x="817" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="42" name="bim3_customer_reward" fq-name="bim3.bim3_customer_reward" order="41" x="1679" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="43" name="bim3_customer_search" fq-name="bim3.bim3_customer_search" order="42" x="1926" y="1261">
+				<path name="bim3"/>
+			</entity>
+			<entity id="44" name="bim3_customer_transaction" fq-name="bim3.bim3_customer_transaction" order="43" x="1926" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="45" name="bim3_customer_wishlist" fq-name="bim3.bim3_customer_wishlist" order="44" x="817" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="46" name="bim3_download" fq-name="bim3.bim3_download" order="45" x="502" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="47" name="bim3_download_description" fq-name="bim3.bim3_download_description" order="46" x="1066" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="48" name="bim3_event" fq-name="bim3.bim3_event" order="47" x="2155" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="49" name="bim3_extension" fq-name="bim3.bim3_extension" order="48" x="1284" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="50" name="bim3_extension_install" fq-name="bim3.bim3_extension_install" order="49" x="817" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="51" name="bim3_extension_path" fq-name="bim3.bim3_extension_path" order="50" x="1066" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="52" name="bim3_filter" fq-name="bim3.bim3_filter" order="51" x="1495" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="53" name="bim3_filter_description" fq-name="bim3.bim3_filter_description" order="52" x="1284" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="54" name="bim3_filter_group" fq-name="bim3.bim3_filter_group" order="53" x="1066" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="55" name="bim3_filter_group_description" fq-name="bim3.bim3_filter_group_description" order="54" x="1679" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="56" name="bim3_geo_zone" fq-name="bim3.bim3_geo_zone" order="55" x="1066" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="57" name="bim3_information" fq-name="bim3.bim3_information" order="56" x="1495" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="58" name="bim3_information_description" fq-name="bim3.bim3_information_description" order="57" x="1926" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="59" name="bim3_information_to_layout" fq-name="bim3.bim3_information_to_layout" order="58" x="1926" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="60" name="bim3_information_to_store" fq-name="bim3.bim3_information_to_store" order="59" x="1284" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="61" name="bim3_language" fq-name="bim3.bim3_language" order="60" x="3412" y="995">
+				<path name="bim3"/>
+			</entity>
+			<entity id="62" name="bim3_layout" fq-name="bim3.bim3_layout" order="61" x="1495" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="63" name="bim3_layout_module" fq-name="bim3.bim3_layout_module" order="62" x="1284" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="64" name="bim3_layout_route" fq-name="bim3.bim3_layout_route" order="63" x="1679" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="65" name="bim3_length_class" fq-name="bim3.bim3_length_class" order="64" x="1679" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="66" name="bim3_length_class_description" fq-name="bim3.bim3_length_class_description" order="65" x="1926" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="67" name="bim3_location" fq-name="bim3.bim3_location" order="66" x="1066" y="1280">
+				<path name="bim3"/>
+			</entity>
+			<entity id="68" name="bim3_manufacturer" fq-name="bim3.bim3_manufacturer" order="67" x="2155" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="69" name="bim3_manufacturer_to_1c" fq-name="bim3.bim3_manufacturer_to_1c" order="68" x="1926" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="70" name="bim3_manufacturer_to_store" fq-name="bim3.bim3_manufacturer_to_store" order="69" x="2155" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="71" name="bim3_marketing" fq-name="bim3.bim3_marketing" order="70" x="2375" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="72" name="bim3_modification" fq-name="bim3.bim3_modification" order="71" x="1495" y="1270">
+				<path name="bim3"/>
+			</entity>
+			<entity id="73" name="bim3_module" fq-name="bim3.bim3_module" order="72" x="2375" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="74" name="bim3_option" fq-name="bim3.bim3_option" order="73" x="2155" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="75" name="bim3_option_description" fq-name="bim3.bim3_option_description" order="74" x="2375" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="76" name="bim3_option_to_1c" fq-name="bim3.bim3_option_to_1c" order="75" x="2375" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="77" name="bim3_option_to_product" fq-name="bim3.bim3_option_to_product" order="76" x="2622" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="78" name="bim3_option_value" fq-name="bim3.bim3_option_value" order="77" x="2622" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="79" name="bim3_option_value_description" fq-name="bim3.bim3_option_value_description" order="78" x="2821" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="80" name="bim3_order" fq-name="bim3.bim3_order" order="79" x="1679" y="1526">
+				<path name="bim3"/>
+			</entity>
+			<entity id="81" name="bim3_order_history" fq-name="bim3.bim3_order_history" order="80" x="2622" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="82" name="bim3_order_option" fq-name="bim3.bim3_order_option" order="81" x="3678" y="995">
+				<path name="bim3"/>
+			</entity>
+			<entity id="83" name="bim3_order_product" fq-name="bim3.bim3_order_product" order="82" x="1679" y="1270">
+				<path name="bim3"/>
+			</entity>
+			<entity id="84" name="bim3_order_recurring" fq-name="bim3.bim3_order_recurring" order="83" x="1066" y="1944">
+				<path name="bim3"/>
+			</entity>
+			<entity id="85" name="bim3_order_recurring_transaction" fq-name="bim3.bim3_order_recurring_transaction" order="84" x="2821" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="86" name="bim3_order_shipment" fq-name="bim3.bim3_order_shipment" order="85" x="1495" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="87" name="bim3_order_status" fq-name="bim3.bim3_order_status" order="86" x="2622" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="88" name="bim3_order_total" fq-name="bim3.bim3_order_total" order="87" x="3078" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="89" name="bim3_order_voucher" fq-name="bim3.bim3_order_voucher" order="88" x="2375" y="1251">
+				<path name="bim3"/>
+			</entity>
+			<entity id="90" name="bim3_product" fq-name="bim3.bim3_product" order="89" x="1495" y="1840">
+				<path name="bim3"/>
+			</entity>
+			<entity id="91" name="bim3_product_attribute" fq-name="bim3.bim3_product_attribute" order="90" x="1679" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="92" name="bim3_product_category" fq-name="bim3.bim3_product_category" order="91" x="3078" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="93" name="bim3_product_description" fq-name="bim3.bim3_product_description" order="92" x="3895" y="995">
+				<path name="bim3"/>
+			</entity>
+			<entity id="94" name="bim3_product_discount" fq-name="bim3.bim3_product_discount" order="93" x="20" y="1289">
+				<path name="bim3"/>
+			</entity>
+			<entity id="95" name="bim3_product_feature" fq-name="bim3.bim3_product_feature" order="94" x="3412" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="96" name="bim3_product_feature_value" fq-name="bim3.bim3_product_feature_value" order="95" x="1926" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="97" name="bim3_product_filter" fq-name="bim3.bim3_product_filter" order="96" x="2821" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="98" name="bim3_product_image" fq-name="bim3.bim3_product_image" order="97" x="3412" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="99" name="bim3_product_option" fq-name="bim3.bim3_product_option" order="98" x="2155" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="100" name="bim3_product_option_value" fq-name="bim3.bim3_product_option_value" order="99" x="3078" y="1242">
+				<path name="bim3"/>
+			</entity>
+			<entity id="101" name="bim3_product_price" fq-name="bim3.bim3_product_price" order="100" x="2375" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="102" name="bim3_product_quantity" fq-name="bim3.bim3_product_quantity" order="101" x="2622" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="103" name="bim3_product_recurring" fq-name="bim3.bim3_product_recurring" order="102" x="2821" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="104" name="bim3_product_related" fq-name="bim3.bim3_product_related" order="103" x="3078" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="105" name="bim3_product_reward" fq-name="bim3.bim3_product_reward" order="104" x="3678" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="106" name="bim3_product_special" fq-name="bim3.bim3_product_special" order="105" x="2155" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="107" name="bim3_product_to_1c" fq-name="bim3.bim3_product_to_1c" order="106" x="3078" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="108" name="bim3_product_to_category" fq-name="bim3.bim3_product_to_category" order="107" x="3412" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="109" name="bim3_product_to_download" fq-name="bim3.bim3_product_to_download" order="108" x="3678" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="110" name="bim3_product_to_layout" fq-name="bim3.bim3_product_to_layout" order="109" x="3412" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="111" name="bim3_product_to_store" fq-name="bim3.bim3_product_to_store" order="110" x="3895" y="20">
+				<path name="bim3"/>
+			</entity>
+			<entity id="112" name="bim3_recurring" fq-name="bim3.bim3_recurring" order="111" x="2622" y="1251">
+				<path name="bim3"/>
+			</entity>
+			<entity id="113" name="bim3_recurring_description" fq-name="bim3.bim3_recurring_description" order="112" x="3678" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="114" name="bim3_return" fq-name="bim3.bim3_return" order="113" x="817" y="1954">
+				<path name="bim3"/>
+			</entity>
+			<entity id="115" name="bim3_return_action" fq-name="bim3.bim3_return_action" order="114" x="3895" y="247">
+				<path name="bim3"/>
+			</entity>
+			<entity id="116" name="bim3_return_history" fq-name="bim3.bim3_return_history" order="115" x="3678" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="117" name="bim3_return_reason" fq-name="bim3.bim3_return_reason" order="116" x="20" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="118" name="bim3_return_status" fq-name="bim3.bim3_return_status" order="117" x="253" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="119" name="bim3_review" fq-name="bim3.bim3_review" order="118" x="1284" y="1280">
+				<path name="bim3"/>
+			</entity>
+			<entity id="120" name="bim3_seo_url" fq-name="bim3.bim3_seo_url" order="119" x="2821" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="121" name="bim3_session" fq-name="bim3.bim3_session" order="120" x="502" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="122" name="bim3_setting" fq-name="bim3.bim3_setting" order="121" x="3895" y="815">
+				<path name="bim3"/>
+			</entity>
+			<entity id="123" name="bim3_shipping_courier" fq-name="bim3.bim3_shipping_courier" order="122" x="817" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="124" name="bim3_statistics" fq-name="bim3.bim3_statistics" order="123" x="1066" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="125" name="bim3_stock_status" fq-name="bim3.bim3_stock_status" order="124" x="1284" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="126" name="bim3_store" fq-name="bim3.bim3_store" order="125" x="3895" y="512">
+				<path name="bim3"/>
+			</entity>
+			<entity id="127" name="bim3_store_to_1c" fq-name="bim3.bim3_store_to_1c" order="126" x="20" y="133">
+				<path name="bim3"/>
+			</entity>
+			<entity id="128" name="bim3_tax_class" fq-name="bim3.bim3_tax_class" order="127" x="3078" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="129" name="bim3_tax_rate" fq-name="bim3.bim3_tax_rate" order="128" x="2375" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="130" name="bim3_tax_rate_to_customer_group" fq-name="bim3.bim3_tax_rate_to_customer_group" order="129" x="253" y="133">
+				<path name="bim3"/>
+			</entity>
+			<entity id="131" name="bim3_tax_rule" fq-name="bim3.bim3_tax_rule" order="130" x="3412" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="132" name="bim3_theme" fq-name="bim3.bim3_theme" order="131" x="20" y="1014">
+				<path name="bim3"/>
+			</entity>
+			<entity id="133" name="bim3_translation" fq-name="bim3.bim3_translation" order="132" x="2622" y="1005">
+				<path name="bim3"/>
+			</entity>
+			<entity id="134" name="bim3_upload" fq-name="bim3.bim3_upload" order="133" x="3678" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="135" name="bim3_user" fq-name="bim3.bim3_user" order="134" x="3412" y="1242">
+				<path name="bim3"/>
+			</entity>
+			<entity id="136" name="bim3_user_group" fq-name="bim3.bim3_user_group" order="135" x="1495" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="137" name="bim3_voucher" fq-name="bim3.bim3_voucher" order="136" x="2821" y="1251">
+				<path name="bim3"/>
+			</entity>
+			<entity id="138" name="bim3_voucher_history" fq-name="bim3.bim3_voucher_history" order="137" x="3895" y="654">
+				<path name="bim3"/>
+			</entity>
+			<entity id="139" name="bim3_voucher_theme" fq-name="bim3.bim3_voucher_theme" order="138" x="502" y="133">
+				<path name="bim3"/>
+			</entity>
+			<entity id="140" name="bim3_voucher_theme_description" fq-name="bim3.bim3_voucher_theme_description" order="139" x="1679" y="380">
+				<path name="bim3"/>
+			</entity>
+			<entity id="141" name="bim3_weight_class" fq-name="bim3.bim3_weight_class" order="140" x="817" y="133">
+				<path name="bim3"/>
+			</entity>
+			<entity id="142" name="bim3_weight_class_description" fq-name="bim3.bim3_weight_class_description" order="141" x="20" y="663">
+				<path name="bim3"/>
+			</entity>
+			<entity id="143" name="bim3_zone" fq-name="bim3.bim3_zone" order="142" x="20" y="825">
+				<path name="bim3"/>
+			</entity>
+			<entity id="144" name="bim3_zone_to_geo_zone" fq-name="bim3.bim3_zone_to_geo_zone" order="143" x="253" y="1014">
+				<path name="bim3"/>
+			</entity>
+			<entity id="145" name="cond_instances" fq-name="performance_schema.cond_instances" order="144" x="1066" y="133">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="146" name="events_waits_current" fq-name="performance_schema.events_waits_current" order="145" x="3895" y="1213">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="147" name="events_waits_history" fq-name="performance_schema.events_waits_history" order="146" x="20" y="1982">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="148" name="events_waits_history_long" fq-name="performance_schema.events_waits_history_long" order="147" x="253" y="1982">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="149" name="events_waits_summary_by_instance" fq-name="performance_schema.events_waits_summary_by_instance" order="148" x="2821" y="1005">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="150" name="events_waits_summary_by_thread_by_event_name" fq-name="performance_schema.events_waits_summary_by_thread_by_event_name" order="149" x="3078" y="1005">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="151" name="events_waits_summary_global_by_event_name" fq-name="performance_schema.events_waits_summary_global_by_event_name" order="150" x="502" y="1014">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="152" name="file_instances" fq-name="performance_schema.file_instances" order="151" x="1926" y="380">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="153" name="file_summary_by_event_name" fq-name="performance_schema.file_summary_by_event_name" order="152" x="253" y="825">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="154" name="file_summary_by_instance" fq-name="performance_schema.file_summary_by_instance" order="153" x="817" y="1014">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="155" name="mutex_instances" fq-name="performance_schema.mutex_instances" order="154" x="2155" y="380">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="156" name="performance_timers" fq-name="performance_schema.performance_timers" order="155" x="253" y="663">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="157" name="rwlock_instances" fq-name="performance_schema.rwlock_instances" order="156" x="502" y="663">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="158" name="setup_consumers" fq-name="performance_schema.setup_consumers" order="157" x="1284" y="133">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="159" name="setup_instruments" fq-name="performance_schema.setup_instruments" order="158" x="2375" y="380">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="160" name="setup_timers" fq-name="performance_schema.setup_timers" order="159" x="1495" y="133">
+				<path name="performance_schema"/>
+			</entity>
+			<entity id="161" name="threads" fq-name="performance_schema.threads" order="160" x="2622" y="380">
+				<path name="performance_schema"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations/>
+	<notes/>
+</diagram>

@@ -77,9 +77,5 @@ if __name__ == "__main__":
     if not success:
         stdout.write(message)
         exit()
-    else:
-        stdout.write("Ответ сервера:\n")
-        stdout.write(message)
-       
 
     stdout.write("Все в порядке!\n")
