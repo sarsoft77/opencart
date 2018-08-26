@@ -429,7 +429,12 @@ class ControllerExtensionModuleExchange1c extends Controller
         $data['refresh'] = $this->url->link('extension/module/exchange1c/refresh', 'user_token=' . $this->session->data['user_token'], true);
         $data['action'] = $this->url->link('extension/module/exchange1c', 'user_token=' . $this->session->data['user_token'], true);
         $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], true);
-
+        if (isset($this->request->post['module_exchange1c_status'])) {
+            $data['module_exchange1c_status'] = $this->request->post['exchange1c_module_status'];
+        } else {
+            $data['module_exchange1c_status'] = $this->config->get('exchange1c_module_status');
+        }
+        
         /**
          * ГЕНЕРАЦИЯ ШАБЛОНА
          */
