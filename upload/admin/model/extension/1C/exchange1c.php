@@ -6815,7 +6815,7 @@ class ModelExtension1CExchange1c extends Model
                     $product_guid = $this->getGuidByProductId($product['product_id']);
                     $document['Документ' . $document_counter]['Товары']['Товар' . $product_counter] = array(
                         'Ид' => $product_guid,
-                        'Нум' => $product_id['product_id'],
+                        'Код' => $product['product_id'],
                         'Наименование' => $product['name'],
                         'ЦенаЗаЕдиницу' => $product['price'],
                         'Количество' => $product['quantity'],
